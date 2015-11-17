@@ -1,3 +1,3 @@
 <?
-include('templates/homepage.php');
+require_once('/templates/homepage.php');
 ?>
