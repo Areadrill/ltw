@@ -2,7 +2,6 @@ CREATE TABLE User (
   uid INTEGER PRIMARY KEY AUTOINCREMENT,
   uname NVARCHAR(25),
   password NVARCHAR(256),
-  salt NVARCHAR(256),
   email NVARCHAR(256)
 );
 
