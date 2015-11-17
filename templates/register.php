@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<?
-require_once('header.php');
-?>
-<script type="text/javascript" src="../js/validations.js"></script>
-</head>
-<body>
-<form id=register action="../database/register.php" method="post">
+<form id=register action="/database/register.php" method="post">
   <label>Username:
     <input id="uname" type="text" name="Username">
   </label>
@@ -27,4 +18,3 @@ require_once('header.php');
   <input type="submit" value="Register" >
 
 </form>
-<? require_once('footer.php'); ?>
