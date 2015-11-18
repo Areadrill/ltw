@@ -1,16 +1,18 @@
 <?
+session_start();
   require_once('connect.php');
   $username = $_POST['Username'];
-  $sttmt = $db->prepare('SELECT password FROM User WHERE uname=?');
+  $sttmt = $db->prepare('SELECT password, salt FROM User WHERE uname=?');
   $sttmt->execute(array($username));
- $pw = $sttmt->fetch();
-
-  if($sttmt->rowCount() !== 0 && password_verify($_POST['Password'], $pw)){
-    session_start();
-    $_SESSION['uname'] = $_POST['Username'];
-    $_SESSION['time'] = time();
-    //echo "Validei e bem!";
+ $res = $sttmt->fetch();
+  if($res){
+    $saltedPw = $_POST['Password'].$res['salt'];
+    if(hash('sha256', $saltedPw) === $res['password']){
+      $_SESSION['username'] = $username;
+      header('Location: ../homepage.php');
+    }
   }
-  header('Location: ../homepage.php');
-  exit();
+  //login falhou, redirecionar pra pagina d login propria
+  /*header('Location: ../homepage.php');
+  exit();*/
 ?>
