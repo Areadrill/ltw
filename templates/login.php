@@ -1,4 +1,4 @@
-<form action="database/login.php" method="post" >
+<form action="database/action_login.php" method="post" >
   <label>Username:
     <input id="uName" type="text" name="Username" >
   </label>

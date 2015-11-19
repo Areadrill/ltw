@@ -8,6 +8,7 @@ CREATE TABLE User (
 
 CREATE TABLE Event (
   eid INTEGER PRIMARY KEY AUTOINCREMENT,
+  ename NVARCHAR(25),
   edate DATE,
   description NVARCHAR(1000),
   type NVARCHAR(20),
