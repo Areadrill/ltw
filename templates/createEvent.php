@@ -3,7 +3,7 @@ if(!isset($_SESSION['username']))
   header('Location: homepage.php');
 ?>
 
-<form action="database/action_createEvent.php" method="post" >
+<form action="database/action_createEvent.php" method="post" enctype="multipart/form-data">
   <label>Event name:
     <input id="eventName" type="text" name="eventName" maxlength="25">
   </label>

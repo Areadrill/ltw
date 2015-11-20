@@ -21,9 +21,16 @@ CREATE TABLE EventOwner(
   CONSTRAINT pk PRIMARY KEY (eid, uid)
 );
 
+CREATE TABLE EventFollower(
+  eid INTEGER REFERENCES Event(eid),
+  uid INTEGER REFERENCES User(uid),
+  CONSTRAINT pk PRIMARY KEY(eid, uid)
+);
+
 CREATE TABLE Album (
   aid INTEGER PRIMARY KEY AUTOINCREMENT,
-  nome NVARCHAR(30)
+  nome NVARCHAR(50),
+  eid INTEGER REFERENCES Event(eid)
 );
 
 CREATE TABLE Image (
