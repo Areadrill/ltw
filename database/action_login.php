@@ -14,6 +14,6 @@ session_start();
     }
   }
   //login falhou, redirecionar pra pagina d login propria
-  /*header('Location: ../homepage.php');
-  exit();*/
+  header('Location: ../homepage.php');
+  exit();
 ?>

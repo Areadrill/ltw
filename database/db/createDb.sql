@@ -12,6 +12,7 @@ CREATE TABLE Event (
   edate DATE,
   description NVARCHAR(1000),
   type NVARCHAR(20),
+  eimage INTEGER REFERENCES Image(iid),
   private BOOLEAN
 );
 
