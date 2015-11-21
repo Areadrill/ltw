@@ -17,8 +17,8 @@ CREATE TABLE Event (
 );
 
 CREATE TABLE EventOwner(
-  eid INTEGER REFERENCES User(uid),
-  uid INTEGER REFERENCES Event(eid),
+  uid INTEGER REFERENCES User(uid),
+  eid INTEGER REFERENCES Event(eid),
   CONSTRAINT pk PRIMARY KEY (eid, uid)
 );
 

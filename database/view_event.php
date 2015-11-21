@@ -21,19 +21,19 @@ function getEvent($id){
   $stmt->execute(array($owner['uid']));
   $creatorName = $stmt->fetch();
 
-  $stmt = $db->prepare('SELECT count(uid) AS attendees, uid  FROM EventFollower WHERE eid=?');
+  $stmt = $db->prepare('SELECT count(uid) AS attendees FROM EventFollower WHERE eid=?');
   $stmt->execute(array($id));
 
-  $attendeeCount = $stmt->fetchAll();
+  $attendeeCount = $stmt->fetch();
   //print_r($attendeeCount);
 ?>
 <img src="<?echo $imgPath['fpath']?>" id="mainimage"/>
 </br>
 <h1 id="eventTitle"><?echo $res['ename']?></h1> <p> created by <?echo $creatorName['uname']?></p>
-<p><?echo $attendeeCount[0]['attendees']?> attending</p>
+<p><?echo $attendeeCount['attendees']?> attending</p>
 <p>When: <?echo $res['edate']?></p>
 <p>Description: <?echo $res['description']?></p>
-<?
+<? //ainda falta meter o forum funcional, botao d follow, opçoes pro owner, ...
 }
 
 ?>

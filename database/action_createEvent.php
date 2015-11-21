@@ -93,7 +93,7 @@ $stmt = $db->prepare('INSERT INTO EventOwner values(?, ?)');
 $stmt->execute(array($_SESSION['id'], $eventId));
 
 $stmt = $db->prepare('INSERT INTO EventFollower values(?, ?)');
-$stmt->execute(array($_SESSION['id'], $eventId));
+$stmt->execute(array($eventId, $_SESSION['id']));
 
 $stmt = $db->prepare('INSERT INTO Album values(null, ?, ?)');
 $albumName = $name.'_defaultAlbum';
