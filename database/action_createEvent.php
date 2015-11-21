@@ -79,8 +79,13 @@ else{
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 
-$stmt = $db->prepare('INSERT INTO Event values(null, ?, ?, ?, ?, ?)');
-$stmt->execute(array($name, $date, $desc, $type, $showing));
+$stmt = $db->prepare('INSERT INTO Image values(null, ?)');
+$filePath = $originalImagePath;
+$stmt->execute(array($filePath));
+$imgId = $db->lastInsertId();
+
+$stmt = $db->prepare('INSERT INTO Event values(null, ?, ?, ?, ?, ?, ?)');
+$stmt->execute(array($name, $date, $desc, $type, $imgId, $showing));
 
 $eventId = $db->lastInsertId();
 
@@ -95,9 +100,8 @@ $albumName = $name.'_defaultAlbum';
 $stmt->execute(array($albumName, $eventId));
 $albumId = $db->lastInsertId();
 
-$stmt = $db->prepare('INSERT INTO Image values(null, ?, ?)');
-$filePath = $originalImagePath;
-$stmt->execute(array($albumId, $filePath));
+$stmt = $db->prepare('INSERT INTO ImageAlbum values(?, ?)');
+$stmt->execute($imgId, $albumId);
 
 //reencaminhar para a pagina do evento?
 header('Location: ../homepage.php')

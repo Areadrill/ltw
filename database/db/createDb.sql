@@ -36,8 +36,13 @@ CREATE TABLE Album (
 
 CREATE TABLE Image (
   iid INTEGER PRIMARY KEY AUTOINCREMENT,
-  aid INTEGER REFERENCES Album(aid),
   fpath NVARCHAR(1000)
+);
+
+CREATE TABLE ImageAlbum (
+  iid INTEGER REFERENCES Image(iid),
+  aid INTEGER REFERENCES Album(aid),
+  CONSTRAINT pk PRIMARY KEY(iid, aid)
 );
 
 CREATE TABLE Thread (
