@@ -58,3 +58,5 @@ CREATE TABLE Comment (
   thread INTEGER REFERENCES Thread(tid),
   content NVARCHAR(140)
 );
+
+.save ../database/db/EventagerDB.db
