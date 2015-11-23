@@ -3,7 +3,7 @@
   $stmt->execute(array($_GET['id']));
   $eventInfo = $stmt->fetch();
 ?>
-<form action="database/action_editEvent.php" method="post">
+<form action="database/action_editEvent.php" method="post" enctype="multipart/form-data">
   <label>Event name:
     <input id="eventName" type="text" name="eventName" maxlength="25" value="<?echo $eventInfo['ename']?>">
   </label>
@@ -36,9 +36,10 @@
 
   <label> Image for the event (Leave this blank if you want to keep the image the event has currently)</br>
 
-    <input id="eventImage" type="file" name="eventImage">
+      <input id="eventImage" type="file" name="eventImage">
   </label>
-  <?$_POST['eventId'] = $_GET['id']?>
+
+  <input type="hidden" name="eventId" value="<?echo $eventInfo['eid']?>">
 </br>
   <input type="submit" value="Save Changes" >
 </form>

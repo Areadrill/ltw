@@ -40,11 +40,11 @@ if(!isset($_FILES['eventImage'])){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 
-$stmt = $db->prepare('SELECT count(*) AS count FROM Event');
+$stmt = $db->prepare('SELECT max(eid) AS max FROM Event');
 $stmt->execute();
 $res = $stmt->fetch();
 
-$rootFileName = '../images/'.($res['count']+1);
+$rootFileName = '../images/'.($res['max']+1);
 $originalsFN = $rootFileName.'/originals';
 $thumbsFN = $rootFileName.'/thumbs';
 
@@ -78,9 +78,9 @@ if(!$imageNotImage){
   imagejpeg($imageSmall, $thumbImagePath);*/ //Need to avriguate about image resizing
 }
 else{
-  rmdir('../images/'.($res['count']+1).'/thumbs_small');
-  rmdir('../images/'.($res['count']+1).'/originals');
-  rmdir('../images'.($res['count']+1));
+  rmdir('../images/'.($res['max']+1).'/thumbs_small');
+  rmdir('../images/'.($res['max']+1).'/originals');
+  rmdir('../images'.($res['max']+1));
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 

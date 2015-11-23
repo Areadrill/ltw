@@ -5,43 +5,38 @@ if(!isset($_SESSION['username'])){
 }
 
 require_once('connect.php');
-echo $_POST['eventId'];
 $name = $_POST['eventName'];
 if(!$name){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
-echo $name;
 
 $date = $_POST['eventDate'];
 if(!$date){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
-echo $date;
 
 $desc = $_POST['eventDescription'];
 if(!$desc){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
-echo $desc;
 
 $type = $_POST['eventType'];
 if(!$type){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
-echo $type;
 
 $showing = $_POST['eventShowing'];
 if(!$showing){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
-echo $showing;
 
+$eventId = $_POST['eventId'];
 
-$rootFileName = '../images/'.$name;
+$rootFileName = '../images/'.$eventId;
 $originalsFN = $rootFileName.'/originals';
 $thumbsFN = $rootFileName.'/thumbs';
 
-if(isset($_FILES['eventImage'])){
+if($_FILES['eventImage']['name']){
   $imageFormats = array('.png', '.jpg', '.jpeg', '.tiff', '.tif'); //por em JSON?
   $imageNotImage = TRUE;
   for($i = 0; $i < count($imageFormats); $i++){
@@ -63,26 +58,26 @@ if(isset($_FILES['eventImage'])){
     $stmt->execute(array($filePath));
     $imgId = $db->lastInsertId();
 
-    $stmt = $db->prepare('SELECT aid FROM Album WHERE eid=? AND name = %_defaultAlbum');
-    $stmt->execute(array($_POST['eventId']));
+    $stmt = $db->prepare('SELECT aid FROM Album WHERE nome=? AND eid=?');
+    $albumName = $eventId.'_defaultAlbum';
+    $stmt->execute(array($albumName, $eventId));
     $albumId = $stmt->fetch();
 
     $stmt = $db->prepare('INSERT INTO ImageAlbum values(?, ?)');
-    $stmt->execute($imgId, $albumId['aid']);
+    $stmt->execute(array($imgId, $albumId['aid']));
   }
   $imageChanged = TRUE;
 }
 
 
-if(isset($imagechanged)){
-  $stmt = $db->prepare('UPDATE Event SET ename=?, edate=?, description=?, type=?, eimage=?, private=?');
-  $stmt->execute(array($name, $date, $desc, $type, $imgId, $showing));
+if($imageChanged === TRUE){
+  $stmt = $db->prepare('UPDATE Event SET ename=?, edate=?, description=?, type=?, eimage=?, private=? WHERE eid=?');
+  $stmt->execute(array($name, $date, $desc, $type, $imgId, $showing, $eventId));
 }
 else{
-  $stmt = $db->prepare('UPDATE Event SET ename=?, edate=?, description=?, type=?, private=?');
-  $stmt->execute(array($name, $date, $desc, $type, $showing));
+  $stmt = $db->prepare('UPDATE Event SET ename=?, edate=?, description=?, type=?, private=? WHERE eid=?');
+  $stmt->execute(array($name, $date, $desc, $type, $showing, $eventId));
 }
-  $eventId = $db->lastInsertId();
-header('Location: ../event.php?id='.$eventId);
+//header('Location: ../event.php?id='.$eventId['eid']);
 
 ?>
