@@ -1,4 +1,4 @@
-<? //ISTO NUM FOI TESTADO
+<? //ISTO NAO VERIFICA SE HA OUTROS EVENTOS CRIADOS PELO MSM USER COM NOME IGUAL
 session_start();
 if(!isset($_SESSION['username'])){
   header('Location: ../homepage.php');
@@ -39,7 +39,12 @@ echo $showing;
 if(!isset($_FILES['eventImage'])){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
-$rootFileName = '../images/'.$name;
+
+$stmt = $db->prepare('SELECT count(*) AS count FROM Event');
+$stmt->execute();
+$res = $stmt->fetch();
+
+$rootFileName = '../images/'.($res['count']+1);
 $originalsFN = $rootFileName.'/originals';
 $thumbsFN = $rootFileName.'/thumbs';
 
@@ -73,9 +78,9 @@ if(!$imageNotImage){
   imagejpeg($imageSmall, $thumbImagePath);*/ //Need to avriguate about image resizing
 }
 else{
-  rmdir('../images/'.$name.'/thumbs_small');
-  rmdir('../images/'.$name.'/originals');
-  rmdir('../images'.$name);
+  rmdir('../images/'.($res['count']+1).'/thumbs_small');
+  rmdir('../images/'.($res['count']+1).'/originals');
+  rmdir('../images'.($res['count']+1));
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 
@@ -96,14 +101,14 @@ $stmt = $db->prepare('INSERT INTO EventFollower values(?, ?)');
 $stmt->execute(array($eventId, $_SESSION['id']));
 
 $stmt = $db->prepare('INSERT INTO Album values(null, ?, ?)');
-$albumName = $name.'_defaultAlbum';
+$albumName = $eventId.'_defaultAlbum';
 $stmt->execute(array($albumName, $eventId));
 $albumId = $db->lastInsertId();
 
 $stmt = $db->prepare('INSERT INTO ImageAlbum values(?, ?)');
 $stmt->execute($imgId, $albumId);
 
-//reencaminhar para a pagina do evento?
-header('Location: ../homepage.php')
+
+header('Location: ../event.php?id='.$eventId);
 
 ?>

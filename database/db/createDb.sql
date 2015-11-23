@@ -59,4 +59,11 @@ CREATE TABLE Comment (
   content NVARCHAR(140)
 );
 
+CREATE TRIGGER cascadeDeleteEvent
+AFTER DELETE ON Event
+BEGIN
+  DELETE FROM EventFollower WHERE eid= OLD.eid;
+  DELETE FROM EventOwner WHERE eid=OLD.eid;
+END;
+
 .save ../database/db/EventagerDB.db
