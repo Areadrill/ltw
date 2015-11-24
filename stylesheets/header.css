@@ -1,0 +1,25 @@
+body{
+  margin: 0;
+}
+
+#header{
+  background-color: #10a853;
+}
+
+#login{
+  margin-right: 2em;
+  margin-top:0.5em;
+  float:right;
+}
+
+#search {
+  float:right;
+  margin-right: 2em;
+  margin-top:1.5em;
+}
+
+#logged{
+  float:right;
+  margin-right: 2em;
+  margin-top:1em;
+}

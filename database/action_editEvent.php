@@ -45,7 +45,7 @@ if($_FILES['eventImage']['name']){
       break;
     }
   }
-  if(!$imageNotImage){
+  if(!isset($imageNotImage) || !$imageNotImage){
     $originalImagePath = $originalsFN.'/'.$_FILES['eventImage']['name'];
     move_uploaded_file($_FILES['eventImage']['tmp_name'], $originalImagePath);
     /*$imageSmall = imagecreatetruecolor(640, 480);
@@ -70,7 +70,7 @@ if($_FILES['eventImage']['name']){
 }
 
 
-if($imageChanged === TRUE){
+if(isset($imageChanged) && $imageChanged === TRUE){
   $stmt = $db->prepare('UPDATE Event SET ename=?, edate=?, description=?, type=?, eimage=?, private=? WHERE eid=?');
   $stmt->execute(array($name, $date, $desc, $type, $imgId, $showing, $eventId));
 }
@@ -78,6 +78,6 @@ else{
   $stmt = $db->prepare('UPDATE Event SET ename=?, edate=?, description=?, type=?, private=? WHERE eid=?');
   $stmt->execute(array($name, $date, $desc, $type, $showing, $eventId));
 }
-//header('Location: ../event.php?id='.$eventId['eid']);
+header('Location: ../event.php?id='.$eventId['eid']);
 
 ?>

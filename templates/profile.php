@@ -1,7 +1,4 @@
-<?session_start();
-if(!isset($_SESSION['username']))
-  header('Location: homepage.php');
-?>
+
 <p>Profile for: <?echo $_SESSION['username'];?>
 <section id="links" >
   <ul>
