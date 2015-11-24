@@ -10,3 +10,5 @@ if(!isset($_SESSION['username']))
   <head>
     <?require_once('templates/header.php');?>
   <?getEventsByName($_GET['searchWords']);?>
+</body>
+</html>

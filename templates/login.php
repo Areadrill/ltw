@@ -9,4 +9,4 @@
   <input type="submit" value="Log in" >
 </form>
 
-<div> Don't have an acount yet? <a href="../register.php">Sign up now!</a> </div>
+<div> Don't have an acount yet? <a href="register.php">Sign up now!</a> </div>

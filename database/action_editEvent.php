@@ -45,7 +45,7 @@ if($_FILES['eventImage']['name']){
       break;
     }
   }
-  if(!isset($imageNotImage) || !$imageNotImage){
+  if(isset($imageNotImage) && !$imageNotImage){
     $originalImagePath = $originalsFN.'/'.$_FILES['eventImage']['name'];
     move_uploaded_file($_FILES['eventImage']['tmp_name'], $originalImagePath);
     /*$imageSmall = imagecreatetruecolor(640, 480);
@@ -54,7 +54,7 @@ if($_FILES['eventImage']['name']){
     imagejpeg($imageSmall, $thumbImagePath);*/ //Need to avriguate about image resizing
 
     $stmt = $db->prepare('INSERT INTO Image values(null, ?)');
-    $filePath = $originalImagePath;
+    $filePath = substr($originalImagePath, 3);
     $stmt->execute(array($filePath));
     $imgId = $db->lastInsertId();
 

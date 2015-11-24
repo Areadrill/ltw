@@ -2,6 +2,7 @@
 session_start();
 if(!isset($_SESSION['username'])){
   header('Location: ../homepage.php');
+  exit();
 }
 
 require_once('connect.php');
@@ -85,7 +86,7 @@ else{
 }
 
 $stmt = $db->prepare('INSERT INTO Image values(null, ?)');
-$filePath = $originalImagePath;
+$filePath = substr($originalImagePath, 3);
 $stmt->execute(array($filePath));
 $imgId = $db->lastInsertId();
 
