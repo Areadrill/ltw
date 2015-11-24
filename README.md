@@ -3,7 +3,7 @@
 ### Requisitos minimos
 * Apagar eventos (deve ser facil por causa dos triggers)
 * ~~Procurar eventos (barra ja existe mas num faz nada)~~
-* Registar em eventos (so uma vez por user)
+* ~~Registar em eventos (so uma vez por user)~~
 * Comentarios no evento (vai ser com o forum q ta abaixo)
 
 ### Requisitos extra
@@ -19,7 +19,7 @@
 
 
 ## Miscelaneous
-* Usar cookies
+* ~~Usar cookies~~ (o prof diz q naum)
 * Segurança no geral
 * Por bónite
 * Usar javascript e css (resolve o d cima...)

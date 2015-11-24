@@ -13,6 +13,10 @@ function getEvent($id){
   $stmt->execute(array($res['eimage']));
   $imgPath = $stmt->fetch();
 
+  $stmt = $db->prepare('SELECT uid FROM EventFollower WHERE eid=?');
+  $stmt->execute(array($res['eid']));
+  $following = $stmt->fetchAll();
+
   $stmt = $db->prepare('SELECT uid FROM EventOwner WHERE eid=?');
   $stmt->execute(array($id));
   $owner = $stmt->fetch();
@@ -33,7 +37,23 @@ function getEvent($id){
 <p><?echo $attendeeCount['attendees']?> attending</p>
 <p>When: <?echo $res['edate']?></p>
 <p>Description: <?echo $res['description']?></p>
-<? //ainda falta meter o forum funcional, botao d follow, opçoes pro owner, ...
+
+<? $alreadyFollowing = FALSE;
+foreach($following as $follower){
+  if($_SESSION['id'] === $follower['uid']){
+    $alreadyFollowing = TRUE;
+    break;
+  }
+}
+if(!$alreadyFollowing){
+  ?><p> You are currently not following this event. <a href="database/addFollower.php?eventId=<?echo $res['eid']?>">Follow now!</a></p>
+
+<?}
+else{
+  ?><p> You are currently following this event </p><?
+}
+
+//ainda falta meter o forum funcional, botao d follow, opçoes pro owner, ...
 }
 
 ?>
