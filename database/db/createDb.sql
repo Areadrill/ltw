@@ -66,4 +66,5 @@ BEGIN
   DELETE FROM EventOwner WHERE eid=OLD.eid;
 END;
 
+
 .save ../database/db/EventagerDB.db

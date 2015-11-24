@@ -2,7 +2,7 @@
 ## Funceminalidades que faltam
 ### Requisitos minimos
 * Apagar eventos (deve ser facil por causa dos triggers)
-* Procurar eventos (barra ja existe mas num faz nada)
+* ~~Procurar eventos (barra ja existe mas num faz nada)~~
 * Registar em eventos (so uma vez por user)
 * Comentarios no evento (vai ser com o forum q ta abaixo)
 
@@ -15,6 +15,7 @@
 ### Merdas em q eu pensei
 
 * Password recovery via e-mail
+* Pesquisa avançada
 
 
 ## Miscelaneous

@@ -30,4 +30,24 @@ function getEvents($ownerId){
 
 
 }
+
+function getEventsByName($searchString){
+  $db = new PDO('sqlite:database/db/EventagerDB.db');
+
+  $stmt = $db->prepare("SELECT * FROM Event WHERE ename LIKE ? ");
+  $stmt->execute(array('%'.$searchString.'%'));
+  $events = $stmt->fetchAll();
+
+  foreach($events as $event){
+    $stmt = $db->prepare('SELECT count(uid) AS attendees FROM EventFollower WHERE eid=?');
+    $stmt->execute(array($event['eid']));
+    $attending = $stmt->fetch();
+    ?>
+    <p class="event"> <a href="event.php?id=<?echo $event['eid']?>"><?echo $event['ename']?></a>  <?echo $event['edate']?> - <?echo $attending['attendees']?> attending </p>
+   </br>
+  <?
+  }
+
+
+}
 ?>
