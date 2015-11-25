@@ -2,14 +2,16 @@
 session_start();
 if(!isset($_SESSION['username'])){
   header('Location: ../homepage.php');
+  exit();
 }
 require_once('connect.php');
-$stmt = $db->prepare('SELECT uid FROM EventOwner WHERE eid=?');
-$stmt->execute(array($_GET['eventId']));
-$owner = $stmt->fetch();
+$stmt = $db->prepare('SELECT uid FROM EventFollower WHERE eid=? AND uid=?');
+$stmt->execute(array($_GET['eventId'], $_SESISON['username']));
+$isFollowing = $stmt->fetch();
 
-if($_SESSION['username'] != $owner['uid']){
+if($isFollowing){
     header('Location: ../homepage.php');
+    exit();
 }
 
 $stmt = $db->prepare('INSERT INTO EventFollower values(?, ?)');
