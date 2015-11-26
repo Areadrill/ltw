@@ -35,7 +35,7 @@ if(!isset($_SESSION['username']))
   </label>
 
   <label> Image for the event (you will be able to add more later)</br>
-
+          Make sure the image has resolution close to 851x315, otherwise you may experience distortion
     <input id="eventImage" type="file" name="eventImage">
   </label>
 

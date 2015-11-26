@@ -23,3 +23,4 @@
 * Segurança no geral
 * Por bónite
 * Usar javascript e css (resolve o d cima...)
+* Mensagens de erro (ta a faltar em todo o lado)

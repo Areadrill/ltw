@@ -62,21 +62,45 @@ if(!$success){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 
-$imageFormats = array('.png', '.jpg', '.jpeg', '.tiff', '.tif'); //por em JSON?
+$imageFormats = array('.png', '.jpg', '.jpeg'); //por em JSON?
 $imageNotImage = TRUE;
 for($i = 0; $i < count($imageFormats); $i++){
   if(strpos($_FILES['eventImage']['name'], $imageFormats[$i], strlen($_FILES['eventImage']['name']) -4) !== FALSE){
     $imageNotImage = FALSE;
+    $ext = $imageFormats[$i];
     break;
   }
 }
 if(!$imageNotImage){
   $originalImagePath = $originalsFN.'/'.$_FILES['eventImage']['name'];
   move_uploaded_file($_FILES['eventImage']['tmp_name'], $originalImagePath);
-  /*$imageSmall = imagecreatetruecolor(640, 480);
-  imagecopyresized($imageSmall, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
-  $thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
-  imagejpeg($imageSmall, $thumbImagePath);*/ //Need to avriguate about image resizing
+
+  //smaller image
+  /*$thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
+  $imagick = new Imagick();
+  $imagick->readImage($originalImagePath);
+  $imagick->resizeImage(640, 480, Imagick::FILTER_LANCZOS, 1);
+  $imagick->writeImage($thumbImagePath);*/
+  $imageSmall = imagecreatetruecolor(851, 315);
+  $originalInfo = getimagesize($originalImagePath);
+
+  switch($ext){
+    case '.png':
+      $original = imagecreatefrompng($originalImagePath);
+      imagecopyresized($imageSmall, $original, 0, 0, 0, 0, 851, 315, $originalInfo[0], $originalInfo[1]);
+      $thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
+      imagepng($imageSmall, $thumbImagePath);
+      break;
+    case '.jpeg': //intentional
+    case '.jpg':
+      $original = imagecreatefromjpeg($originalImagePath);
+      imagecopyresized($imageSmall, $original, 0, 0, 0, 0, 851, 315, $originalInfo[0], $originalInfo[1]);
+      $thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
+      imagejpeg($imageSmall, $thumbImagePath);
+      break;
+    default:
+      break;
+  }
 }
 else{
   rmdir('../images/'.($res['max']+1).'/thumbs_small');
@@ -107,9 +131,8 @@ $stmt->execute(array($albumName, $eventId));
 $albumId = $db->lastInsertId();
 
 $stmt = $db->prepare('INSERT INTO ImageAlbum values(?, ?)');
-$stmt->execute($imgId, $albumId);
+$stmt->execute(array($imgId, $albumId));
 
-
-header('Location: ../event.php?id='.$eventId);
+//header('Location: ../event.php?id='.$eventId);
 
 ?>
