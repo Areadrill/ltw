@@ -27,8 +27,6 @@ function getEvents($ownerId){
      </br>
   <?
   }
-
-
 }
 
 function getEventsByName($searchString){
@@ -39,16 +37,16 @@ function getEventsByName($searchString){
   $events = $stmt->fetchAll();
 
   foreach($events as $event){
-    $stmt = $db->prepare('SELECT count(uid) AS attendees FROM EventFollower WHERE eid=?');
-    $stmt->execute(array($event['eid']));
-    $attending = $stmt->fetch();
-    ?>
-    <p class="event"> <a href="event.php?id=<?echo $event['eid']?>"><?echo $event['ename']?></a>  <?echo $event['edate']?> - <?echo $attending['attendees']?> attending </p>
-   </br>
+    if(!$event['private']){
+      $stmt = $db->prepare('SELECT count(uid) AS attendees FROM EventFollower WHERE eid=?');
+      $stmt->execute(array($event['eid']));
+      $attending = $stmt->fetch();
+      ?>
+      <p class="event"> <a href="event.php?id=<?echo $event['eid']?>"><?echo $event['ename']?></a>  <?echo $event['edate']?> - <?echo $attending['attendees']?> attending </p>
+     </br>
   <?
+    }
   }
-
-
 }
 //Produces a string formatted to be used in the query of the calling function
 function getExpression($searchString){
@@ -57,7 +55,6 @@ function getExpression($searchString){
   foreach($array as $word){
     $str .= $word.'%';
   }
-  echo $str;
   return $str;
 }
 ?>
