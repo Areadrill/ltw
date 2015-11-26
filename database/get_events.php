@@ -33,9 +33,9 @@ function getEvents($ownerId){
 
 function getEventsByName($searchString){
   $db = new PDO('sqlite:database/db/EventagerDB.db');
-
+  $searchFormatted = getExpression($searchString);
   $stmt = $db->prepare("SELECT * FROM Event WHERE ename LIKE ? ");
-  $stmt->execute(array('%'.$searchString.'%'));
+  $stmt->execute(array($searchFormatted));
   $events = $stmt->fetchAll();
 
   foreach($events as $event){
@@ -49,5 +49,15 @@ function getEventsByName($searchString){
   }
 
 
+}
+//Produces a string formatted to be used in the query of the calling function
+function getExpression($searchString){
+  $str = '%';
+  $array = explode(" ", $searchString);
+  foreach($array as $word){
+    $str .= $word.'%';
+  }
+  echo $str;
+  return $str;
 }
 ?>
