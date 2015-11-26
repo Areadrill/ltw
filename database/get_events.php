@@ -22,7 +22,7 @@ function getEvents($ownerId){
       <p class="event"> <a href="event.php?id=<?echo $event['eid']?>"><?echo $res['ename']?></a>  <?echo $res['edate']?> - <?echo $attending['attendees']?> attending </p>
       <ul id="options">
         <li><a href="editEvent.php?id=<?echo $event['eid']?>">Edit</a></li>
-        <li>Delete<li>
+        <li><a href="database/action_deleteEvent.php?id=<?echo $event['eid']?>">Delete</a><li>
       </ul>
      </br>
   <?
