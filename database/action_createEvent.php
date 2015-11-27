@@ -133,6 +133,6 @@ $albumId = $db->lastInsertId();
 $stmt = $db->prepare('INSERT INTO ImageAlbum values(?, ?)');
 $stmt->execute(array($imgId, $albumId));
 
-//header('Location: ../event.php?id='.$eventId);
+header('Location: ../event.php?id='.$eventId);
 
 ?>

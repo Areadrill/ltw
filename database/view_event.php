@@ -51,9 +51,10 @@ if(!$alreadyFollowing){
 <?}
 else{
   ?><p> You are currently following this event </p><?
-}
-
-//ainda falta meter o forum funcional, botao d follow, opçoes pro owner, ...
+}?>
+<p> Want more information? Want to get in touch with other attendees and the event's managers? <a href="forum.php?id=<?echo $res['eid']?>">Check out the forum!</a></p>
+<?
+//ainda falta meter o forum funcional, opçoes pro owner, ...
 }
 
 ?>

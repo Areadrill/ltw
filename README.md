@@ -24,3 +24,5 @@
 * Por bónite
 * Usar javascript e css (resolve o d cima...)
 * Mensagens de erro (ta a faltar em todo o lado)
+* Comentários podem ter respostas (reddit-style)
+* Varias paginas tanto d threads como de comentarios (para n tar uma barra d scroll gigante)

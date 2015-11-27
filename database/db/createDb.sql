@@ -47,9 +47,10 @@ CREATE TABLE ImageAlbum (
 
 CREATE TABLE Thread (
   tid INTEGER PRIMARY KEY AUTOINCREMENT,
+  title NVARCHAR(50),
   creator INTEGER REFERENCES User(uid),
   event INTEGER REFERENCES Event(eid),
-  description NVARCHAR(1000)
+  fulltext NVARCHAR(1000)
 );
 
 CREATE TABLE Comment (
