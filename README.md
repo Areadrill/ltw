@@ -8,7 +8,7 @@
 
 ### Requisitos extra
 * Eventos publicos/privados (opçao ja existe mas n faz nada)
-* Forum pra cada evento (base de dados ja ta preparada)
+* ~~Forum pra cada evento (base de dados ja ta preparada)~~
 * Por mais fotos nos eventos (com albuns) (base de dados ja ta preparada)
 * Share em redes sociais
 

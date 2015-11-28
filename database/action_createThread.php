@@ -1,4 +1,4 @@
-<? //ISTO NUM FOI TESTADO
+<?
 session_start();
 if(!isset($_SESSION['username']) || !isset($_POST['threadTitle']) || !isset($_POST['threadText']) || !isset($_POST['eventId'])){
   header('Location: ../homepage.php');
@@ -18,7 +18,5 @@ $stmt = $db->prepare('INSERT INTO Thread values(null, ?, ?, ?, ?)');
 $stmt->execute(array($_POST['threadTitle'], $_SESSION['username'], $_POST['eventId'], $_POST['threadText']));
 $count = $stmt->fetch();
 
-header('Location: homepage.php');
-
-
+header('Location: ../homepage.php');
 ?>

@@ -1,6 +1,7 @@
 <?
 if(!isset($_SESSION['id'])){
   header('Location: homepage.php');
+  exit();
 }
 
 function getEvent($id){

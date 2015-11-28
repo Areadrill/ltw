@@ -26,7 +26,7 @@ function getEventThreads($eventId){
 
     ?>
 
-    <h2><?echo $thread['title'];?></h2> <p>Created by: <?echo $thread['creator'];?></p>
+    <h2><a href="thread.php?id=<?echo $thread['tid']?>"><?echo $thread['title'];?></a></h2> <p>Created by: <?echo $thread['creator'];?></p>
     <p>Comments: <?echo $comments['comments'];?></p>
 
   <?}

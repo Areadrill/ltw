@@ -57,7 +57,7 @@ CREATE TABLE Comment (
   cid INTEGER PRIMARY KEY AUTOINCREMENT,
   user INTEGER REFERENCES User(uid),
   thread INTEGER REFERENCES Thread(tid),
-  content NVARCHAR(140)
+  content NVARCHAR(512)
 );
 
 CREATE TRIGGER cascadeDeleteEvent
