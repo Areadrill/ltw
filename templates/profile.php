@@ -4,6 +4,7 @@
   <ul>
     <li> <a href="createEvent.php">Create new event</a> </li>
     <li> <a href="myEvents.php"> View my events </a></li>
+    <li> <a href="eventsFollowed.php"> View events I'm following </a></li>
     <li> Account options </li>
   </ul>
 </section>

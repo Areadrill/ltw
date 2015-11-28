@@ -57,4 +57,23 @@ function getExpression($searchString){
   }
   return $str;
 }
+
+function getEventsUserFollows($uid){
+  $db = new PDO('sqlite:database/db/EventagerDB.db');
+  $stmt = $db->prepare('SELECT eid FROM EventFollower WHERE uid=?');
+  $stmt->execute(array($uid));
+  $eventIds = $stmt->fetchAll();
+
+  foreach($eventIds as $event){
+    $stmt = $db->prepare('SELECT ename FROM Event WHERE eid=?');
+    $stmt->execute(array($event['eid']));
+    $eventInfo = $stmt->fetch();
+
+    $stmt = $db->prepare('SELECT count(uid) AS attendees FROM EventFollower WHERE uid=?');
+    $stmt->execute(array($uid));
+    $attending = $stmt->fetch();?>
+    <p><a href="event.php?id=<?echo $event['eid']?>"><?echo $eventInfo['ename']?></a> - <?echo $attending['attendees']?> attending</p>
+  <?}
+}
+
 ?>
