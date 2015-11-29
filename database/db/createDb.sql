@@ -65,6 +65,14 @@ AFTER DELETE ON Event
 BEGIN
   DELETE FROM EventFollower WHERE eid= OLD.eid;
   DELETE FROM EventOwner WHERE eid=OLD.eid;
+  DELETE FROM Album WHERE eid=OLD.eid;
+END;
+
+CREATE TRIGGER cascadeDeleteAlbum
+AFTER DELETE ON Album
+BEGIN
+  DELETE FROM Image WHERE iid=(SELECT iid FROM ImageAlbum WHERE aid=OLD.aid);
+  DELETE FROM ImageAlbum WHERE aid=OLD.aid;
 END;
 
 
