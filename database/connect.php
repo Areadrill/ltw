@@ -1,3 +1,3 @@
 <?
- $db = new PDO('sqlite:/database/db/EventagerDB.db');
+ $db = new PDO("sqlite:". $_SERVER["DOCUMENT_ROOT"] . '/database/db/EventagerDB.db');
 ?>
