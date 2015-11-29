@@ -12,7 +12,7 @@
 function existsAlbum($aid){
   require("connect.php");
 
-  $stmt = $db->prepare('SELECT * FROM Almbum WHERE aid=?');
+  $stmt = $db->prepare('SELECT * FROM Album WHERE aid=?');
   $stmt->execute(array($aid));
   $result = $stmt->fetch();
   if($result == FALSE)
@@ -23,16 +23,16 @@ function existsAlbum($aid){
 function uploadImage($file){
   require("connect.php");
 
-  $imageFormats = array('.png', '.jpg', '.jpeg');
+  $imageFormats = array('png', 'jpg', 'jpeg');
 
   //verify image
   $path = $file["name"];
   $ext = pathinfo($path, PATHINFO_EXTENSION);
   $allowed = in_array($ext, $imageFormats);
-
+  var_dump($allowed);
   if($allowed){
-    $filename = tempnam('../images/albums', '');
-    unlink($filename);
+    $filename = $_SERVER["DOCUMENT_ROOT"]."/images/albums/".uniqid("",true).".".$ext;
+    var_dump($filename);
     move_uploaded_file($file["tmp_name"], $filename);
     require("connect.php");
     $stmt = $db->prepare("INSERT INTO Image values(null, ?)");
@@ -47,9 +47,10 @@ function addAlbumPhoto($albumId, $photo){
 require("connect.php");
   $uploadResult = uploadImage($photo);
   if($uploadResult){
+
     $query = $db->prepare("SELECT iid FROM Image WHERE fpath=?");
     $query->execute(array($uploadResult));
-    $iid = $query->fetch();
+    $iid = $query->fetch()[0];
     $stmt = $db->prepare("INSERT INTO ImageAlbum values(?,?)");
     $stmt->execute(array($albumId, $iid));
   }
