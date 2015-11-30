@@ -12,10 +12,10 @@ function getUsersByName($searchString){
     <input type="submit" value="Search" >
   </form>
 
-  <form action="action_sendMail.php" method="post">
+  <form action="database/addFollower.php?eventId=<?echo $_GET['id']?>" method="post">
 
   <?if($searchString !== ''){foreach($users as $user){?>
-    <label><?echo $user['uname']?></label> <input type="checkbox" name="users" value="<?echo $user['uid']?>" > <br>
+    <label><?echo $user['uname']?></label> <input type="checkbox" name="users[]" value="<?echo $user['uid']?>" > <br>
   <?}?>
 
     <input type="submit" value="Invite these people" >
