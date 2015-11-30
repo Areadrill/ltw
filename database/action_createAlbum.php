@@ -16,19 +16,18 @@ foreach($results as $result){
     $allowed = TRUE;
 }
 
+var_dump($allowed);
+
+
 if($allowed){
-  $result = createAlbum($nome, $eventId);
+  $result = createAlbum( $eventId, $albumName);
   if($result == FALSE){
     http_response_code(400);
-    header('Location: ../homepage.php');
-    exit();
   }
-
-  header('Location: ../homepage.php');
-  exit();
 }
-
+else
 http_response_code(401);
+
 header('Location: ../homepage.php');
 
 ?>

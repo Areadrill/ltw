@@ -53,6 +53,28 @@ if(!$alreadyFollowing){
 else{
   ?><p> You are currently following this event </p><?
 }?>
+
+<h2>Albums</h2>
+<ul>
+<?
+  require_once("database/album.php");
+  $albums = getAlbums($id);
+  foreach($albums as $album){
+    $thumbPath = getAlbumThumbPath($album);
+    ?>
+    <li>
+      <div class="album">
+        <a href="view_album.php?id=<?echo $album['aid']?>" target="_blank">
+          <img src="<? print($thumbPath); ?>" alt="<? echo $album['nome']?>" width="110" height="90"/>
+          <p class="albumName"> <? echo $album['nome']; ?> </p>
+        </a>
+      </div>
+    </li>
+    <?
+  }
+
+?>
+</ul>
 <p> Want more information? Want to get in touch with other attendees and the event's managers? <a href="forum.php?id=<?echo $res['eid']?>">Check out the forum!</a></p>
 <?
 //ainda falta meter o forum funcional, opçoes pro owner, ...

@@ -3,7 +3,7 @@
     <input type="number" name="eventId" min="0"/>
   </label>
   <label>Album Name:
-    <input type="file" name="albumName"/>
+    <input type="text" name="albumName"/>
   </label>
-  <input type="submit" hidden="hidden">
+  <input type="submit">
 </form>
