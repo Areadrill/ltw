@@ -14,6 +14,15 @@ function getAlbum($aid){
   return $res;
 }
 
+function deleteAlbum($aid){
+  require("connect.php");
+
+  $stmt = $db->prepare("DELETE FROM Album WHERE aid=?");
+  $res = $stmt->execute(array($aid));
+
+  return $res;
+}
+
 function existsAlbum($aid){
   require("connect.php");
 
@@ -23,6 +32,15 @@ function existsAlbum($aid){
   if($result == FALSE)
     return $result;
   return TRUE;
+}
+
+function getAlbumAllowedEditors($aid){
+  require("connect.php");
+
+  $stmt = $db->prepare("SELECT EventOwner.uid FROM EventOwner, Album Where Album.eid=EventOwner.eid AND Album.aid=?");
+  $stmt->execute(array($aid));
+  $result = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+  return $result;
 }
 
 function uploadImage($file){
@@ -37,7 +55,7 @@ function uploadImage($file){
   $allowed = in_array($ext, $imageFormats);
   var_dump($allowed);
   if($allowed){
-    $filename = $_SERVER["DOCUMENT_ROOT"]."/images/albums/".uniqid("",true).".".$ext;
+    $filename = "/images/albums/".uniqid("",true).".".$ext;
     var_dump($filename);
     move_uploaded_file($file["tmp_name"], $filename);
     require("connect.php");
@@ -57,9 +75,8 @@ require("connect.php");
     $query = $db->prepare("SELECT iid FROM Image WHERE fpath=?");
     $query->execute(array($uploadResult));
     $iid = $query->fetch()[0];
-    var_dump($iid);
-  //  $stmt = $db->prepare("INSERT INTO ImageAlbum values(?,?)");
-  //  $stmt->execute(array($albumId, $iid));
+    $stmt = $db->prepare("INSERT INTO ImageAlbum values(?,?)");
+    $stmt->execute(array($albumId, $iid));
   }
 }
 
@@ -74,6 +91,7 @@ require("connect.php");
     $stmt = $db->prepare('SELECT fpath FROM Image, ImageAlbum WHERE ImageAlbum.iid=Image.iid AND ImageAlbum.aid=?');
     $res = $stmt->execute(array($album['aid']));
     if($res){
+
      return  $stmt->fetch()[0];
    }
     else

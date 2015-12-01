@@ -6,8 +6,8 @@ if(existsAlbum($_POST["albumId"])){
   $eventID = getAlbum($_POST["albumId"])["eid"];
   http_response_code(200);
   header("Location: ../manageAlbums.php?eid=".$eventID);
-  exit;
 }
-else
+else{
   http_response_code(400);
   header("Location: ../homepage.php");
+}

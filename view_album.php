@@ -24,6 +24,11 @@ $albumImages = getAlbumImages($album);
   </head>
   <body>
     <h1> <?echo $album['nome'];?></h1>
+    <ul class="options">
+        <li><a href="database/action_deleteAlbum.php?id=<?echo $_GET['id']?>">Delete Album</a></li>
+        <li><a onclick="uploadImage">Add Image</a></li>
+        <li><a onclick="renameAlbum">Rename Album</a></li>
+    </ul>
     <ul class="albumImageList">
 
     <? foreach($albumImages as $image){
