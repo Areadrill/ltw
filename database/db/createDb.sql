@@ -69,13 +69,6 @@ BEGIN
 END;
 
 CREATE TRIGGER cascadeDeleteAlbum
-AFTER DELETE ON Album
-BEGIN
-  DELETE FROM Image WHERE iid=(SELECT iid FROM ImageAlbum WHERE aid=OLD.aid);
-  DELETE FROM ImageAlbum WHERE aid=OLD.aid;
-END;
-
-CREATE TRIGGER cascadeDeleteAlbum
 AFTER DELETE ON ImageAlbum
 BEGIN
   DELETE FROM Image WHERE iid=OLD.iid;
