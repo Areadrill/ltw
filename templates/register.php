@@ -4,7 +4,7 @@
   </label>
 </br>
   <label>Password:
-    <input id="pass" type="password" name="Password">
+    <input id="password" type="password" name="Password">
   </label>
 </br>
   <label>Re-type password:
