@@ -24,6 +24,7 @@ function getEvents($ownerId){
         <li><a href="editEvent.php?id=<?echo $event['eid']?>">Edit</a></li>
         <li><a href="database/action_deleteEvent.php?id=<?echo $event['eid']?>">Delete</a></li>
         <li><a href="invite.php?id=<?echo $event['eid']?>">Invite users to this event</a></li>
+        <li><a href="manageAlbums.php?eid=<?echo $event['eid']?>">Manage Albums</a></li>
       </ul>
      </br>
   <?
