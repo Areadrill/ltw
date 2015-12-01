@@ -76,7 +76,7 @@ require("connect.php");
     $query->execute(array($uploadResult));
     $iid = $query->fetch()[0];
     $stmt = $db->prepare("INSERT INTO ImageAlbum values(?,?)");
-    $stmt->execute(array($albumId, $iid));
+    $stmt->execute(array( $iid, $albumId));
   }
 }
 
