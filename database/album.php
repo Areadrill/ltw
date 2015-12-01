@@ -55,9 +55,9 @@ function uploadImage($file){
   $allowed = in_array($ext, $imageFormats);
   var_dump($allowed);
   if($allowed){
-    $filename = "/images/albums/".uniqid("",true).".".$ext;
-    var_dump($filename);
-    move_uploaded_file($file["tmp_name"], $filename);
+    $filename = "images/albums/".uniqid("",true).".".$ext;
+    $fpath = $_SERVER["DOCUMENT_ROOT"]."/".$filename;
+    move_uploaded_file($file["tmp_name"], $fpath);
     require("connect.php");
     $stmt = $db->prepare("INSERT INTO Image values(null, ?)");
     $stmt->execute(array($filename));
