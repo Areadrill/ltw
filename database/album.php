@@ -51,9 +51,7 @@ function uploadImage($file){
   //verify image
   $path = $file["name"];
   $ext = pathinfo($path, PATHINFO_EXTENSION);
-  var_dump($ext);
   $allowed = in_array($ext, $imageFormats);
-  var_dump($allowed);
   if($allowed){
     $filename = "images/albums/".uniqid("",true).".".$ext;
     $fpath = $_SERVER["DOCUMENT_ROOT"]."/".$filename;
