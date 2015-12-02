@@ -1,4 +1,11 @@
 <?
+function renameAlbum($aid, $newName){
+  require("connect.php");
+  $stmt = $db->prepare("UPDATE Album SET nome=? WHERE aid=?");
+  $res = $stmt->execute(array($newName, $aid));
+  return $res;
+}
+
 function getAlbum($aid){
   require("connect.php");
   $stmt = $db->prepare('SELECT * FROM Album WHERE aid=?');

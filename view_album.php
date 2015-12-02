@@ -38,10 +38,18 @@ $albumImages = getAlbumImages($album);
       <input type="submit" value="Upload Image!">
     </form>
 
+    <form id="renameAlbumForm" enctype="multipart/form-data" hidden="hidden">
+      <label >New Album Name:
+        <input id="uploadImageAlbumNumber" type="text" name="newName" min="0" value=""/>
+      </label>
+      <input id="uploadImageAlbumNumber" type="number" name="aid" min="0" value="<?echo $_GET['id']?>" hidden="hidden""/>
+      <input type="submit" value="Rename!">
+    </form>
+
     <ul class="options">
         <li><a href="database/action_deleteAlbum.php?id=<?echo $_GET['id']?>">Delete Album</a></li>
         <li><a href="javascript:;" id="addImage">Add Image</a></li>
-        <li><a onclick="renameAlbum">Rename Album</a></li>
+        <li><a href="javascript:;" id="renameAlbum">Rename Album</a></li>
     </ul>
     <ul class="albumImageList">
 
