@@ -47,6 +47,7 @@ $(document).ready(function ()
         success: function(response){
           var json_response = jQuery.parseJSON(response);
             $("h1").first().text(json_response);
+            $(this).attr("hidden", "hidden");
         },
         cache: false,
         contentType: false,
@@ -54,5 +55,11 @@ $(document).ready(function ()
       });
     });
 
+    $("button.deleteImage").click(function(){
+      var parent = $(this).parent();
+      $.post("database/action_deleteAlbumPhoto.php",
+       {aid: $("#uploadImageAlbumNumber").attr("value"), iid: $(this).attr("data-iid")})
+       .done(function(){parent.remove();});
+    });
 
   });

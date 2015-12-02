@@ -1,4 +1,12 @@
 <?
+function imageInAlbum($iid, $aid){
+  require("connect.php");
+  $stmt = $db->prepare("SELECT iid FROM ImageAlbum WHERE aid=?");
+  $stmt->execute(array($aid));
+  $res = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+  return in_array($iid, $res);
+}
+
 function renameAlbum($aid, $newName){
   require("connect.php");
   $stmt = $db->prepare("UPDATE Album SET nome=? WHERE aid=?");
@@ -105,7 +113,7 @@ require("connect.php");
 
   function getAlbumImages($album){
     require("connect.php");
-    $stmt = $db->prepare('SELECT fpath FROM Image, ImageAlbum WHERE ImageAlbum.iid=Image.iid AND ImageAlbum.aid=?');
+    $stmt = $db->prepare('SELECT fpath, Image.iid FROM Image, ImageAlbum WHERE ImageAlbum.iid=Image.iid AND ImageAlbum.aid=?');
     $stmt->execute(array($album['aid']));
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $results;

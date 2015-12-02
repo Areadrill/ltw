@@ -1,6 +1,6 @@
 <?session_start();
 if(!isset($_GET["id"])){
-  http_response_code(422);
+  http_response_code(400);
   exit();
 }
 

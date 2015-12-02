@@ -40,7 +40,7 @@ $albumImages = getAlbumImages($album);
 
     <form id="renameAlbumForm" enctype="multipart/form-data" hidden="hidden">
       <label >New Album Name:
-        <input id="uploadImageAlbumNumber" type="text" name="newName" min="0" value=""/>
+        <input type="text" name="newName" min="0" value=""/>
       </label>
       <input id="uploadImageAlbumNumber" type="number" name="aid" min="0" value="<?echo $_GET['id']?>" hidden="hidden""/>
       <input type="submit" value="Rename!">
@@ -57,6 +57,7 @@ $albumImages = getAlbumImages($album);
       ?>
         <li>
           <img src="<?echo $image['fpath']; ?>" alt="Album image" />
+          <button type="button" class="deleteImage" data-iid="<?echo $image['iid'];?>">Delete Image</button>
         </li>
       <?
     }?>
