@@ -8,6 +8,9 @@ if(!isset($_SESSION['username']))
 <!DOCTYPE html>
 <html>
   <head>
+    <?require_once('includes.php');?>
+  </head>
+  <body>
     <?require_once('templates/header.php');?>
   <?getEvents($_SESSION['id']);?>
 </body>

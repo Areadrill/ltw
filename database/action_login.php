@@ -10,10 +10,20 @@ session_start();
     if(hash('sha256', $saltedPw) === $res['password']){
       $_SESSION['username'] = $username;
       $_SESSION['id'] = $res['uid'];
-      header('Location: ../homepage.php');
+      if(isset($_POST['ajax'])){
+        echo 0;
+      }
+      else{
+          header('Location: ../homepage.php');
+      }
     }
   }
-  //login falhou, redirecionar pra pagina d login propria
-  header('Location: ../homepage.php');
+
+  if(isset($_POST['ajax'])){
+    echo "Login failed";
+  }
+  else{
+      header('Location: ../homepage.php');
+  }
   exit();
 ?>

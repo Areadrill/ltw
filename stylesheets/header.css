@@ -23,3 +23,7 @@ body{
   margin-right: 2em;
   margin-top:1em;
 }
+
+.userValidInfo{
+  float: right;
+}

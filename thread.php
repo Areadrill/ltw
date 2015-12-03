@@ -10,6 +10,9 @@ require_once('database/view_thread.php');
 
 <html>
   <head>
+    <?require_once('includes.php');?>
+  </head>
+  <body>
   <? require_once('templates/header.php'); ?>
   <?getThread($_GET['id']);?>
 </html>

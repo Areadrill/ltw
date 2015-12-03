@@ -7,9 +7,10 @@ if (!isset($_SESSION['username']) || !isset($_GET['id'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <?require_once('templates/header.php');?>
+    <?require_once('includes.php');?>
   </head>
   <body>
+    <?require_once('templates/header.php');?>
     <?require_once('templates/editEvent.php');?>
   </body>
 </html>

@@ -20,11 +20,10 @@ $albumImages = getAlbumImages($album);
 <!DOCTYPE html>
 <html>
   <head>
-    <?require_once('templates/header.php');?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/view_album.js"></script>
+    <?require_once('includes.php');?>
   </head>
   <body>
+    <?require_once('templates/header.php');?>
     <h1> <?echo $album['nome'];?></h1>
 
     <form id="uploadAlbumImage" enctype="multipart/form-data" hidden="hidden">
@@ -42,7 +41,7 @@ $albumImages = getAlbumImages($album);
       <label >New Album Name:
         <input type="text" name="newName" min="0" value=""/>
       </label>
-      <input id="uploadImageAlbumNumber" type="number" name="aid" min="0" value="<?echo $_GET['id']?>" hidden="hidden""/>
+      <input id="uploadImageAlbumNumber" type="number" name="aid" min="0" value="<?echo $_GET['id']?>" hidden="hidden"/>
       <input type="submit" value="Rename!">
     </form>
 

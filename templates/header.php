@@ -1,8 +1,4 @@
-<title> Eventager </title>
-<link rel="stylesheet" type="text/css" href="stylesheets/header.css" >
 
-</head>
-<body>
   <section id="header">
     <a href="homepage.php"><img src="images/site/logoSmallestCropped.png" /></a>
     <section id="login">
