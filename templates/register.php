@@ -1,4 +1,4 @@
-<form id=register action="database/action_register.php" method="post">
+<form id="register" action="database/action_register.php" method="post">
   <label>Username:
     <input id="uname" type="text" name="Username">
   </label>
@@ -15,6 +15,6 @@
     <input id="mail" type="text" name="mail">
   </label>
 </br>
-  <input type="submit" value="Register" >
+  <input id="registerSubmit" type="submit" value="Register" >
 
 </form>
