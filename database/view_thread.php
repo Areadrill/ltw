@@ -32,9 +32,9 @@ function getThread($id){
   <?}?>
 
   <label id="writeComment">Comment here</label>
-  <form action="database/action_addComment.php" method="post" >
-    <textarea rows="8" cols="80" name="comment"></textarea>
-    <input type="hidden" name="threadId" value="<?echo $thread['tid']?>"/>
+  <form id="createComment" action="database/action_addComment.php" method="post" >
+    <textarea id="commentText" rows="8" cols="80" name="comment" maxlength="512"></textarea>
+    <input id="tid" type="hidden" name="threadId" value="<?echo $thread['tid']?>"/>
     <input type="submit" value="Comment" />
   </form>
 

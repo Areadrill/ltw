@@ -8,6 +8,7 @@ if (!isset($_SESSION['username']) || !isset($_GET['id'])) {
 <html>
   <head>
     <?require_once('includes.php');?>
+    <script type="text/javascript" src="scripts/editEventValidations.js" ></script>
   </head>
   <body>
     <?require_once('templates/header.php');?>

@@ -3,7 +3,7 @@
   $stmt->execute(array($_GET['id']));
   $eventInfo = $stmt->fetch();
 ?>
-<form action="database/action_editEvent.php" method="post" enctype="multipart/form-data">
+<form id="editEvent" action="database/action_editEvent.php" method="post" enctype="multipart/form-data">
   <label>Event name:
     <input id="eventName" type="text" name="eventName" maxlength="25" value="<?echo $eventInfo['ename']?>">
   </label>
@@ -13,7 +13,7 @@
   </label>
 </br>
 <label>Description:</br>
-  <textarea rows="8" cols="80" maxlength="1000" name="eventDescription"><?echo $eventInfo['description']?></textarea>
+  <textarea id="eventDescription" rows="8" cols="80" maxlength="1000" name="eventDescription"><?echo $eventInfo['description']?></textarea>
 </label>
 </br>
 <label>Type of event

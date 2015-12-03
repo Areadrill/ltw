@@ -1,5 +1,6 @@
+//isto n precisa dum ficheiro so pra si...
 function setup(){
-  $("#createEvent").submit(validate);
+  $("#editEvent").submit(validate);
   $("#eventName").change(checkValidName);
   $("#eventDate").change(checkDateNotNull);
   $("#eventDescription").change(checkValidDesc);
@@ -48,8 +49,7 @@ function checkImageSelected(){
   console.log(extension);
   $(".imageValidInfo").remove();
   if(file == ''){
-    $("#eventImage").after("<span class=\"imageValidInfo\">Need to select an image.</span>");
-    return false;
+    return true;
   }
   else {
     switch (extension){

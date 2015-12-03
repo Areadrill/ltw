@@ -13,7 +13,8 @@
     exit();
   }
 
-  header('Location: ../thread.php?id='.$_POST['threadId']);
+  echo "lel";
+  //header('Location: ../thread.php?id='.$_POST['threadId']);
 
 
 ?>

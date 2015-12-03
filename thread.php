@@ -11,6 +11,7 @@ require_once('database/view_thread.php');
 <html>
   <head>
     <?require_once('includes.php');?>
+    <script type="text/javascript" src="scripts/ajaxComments.js" ></script>
   </head>
   <body>
   <? require_once('templates/header.php'); ?>
