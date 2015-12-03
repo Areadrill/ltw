@@ -1,7 +1,4 @@
-<?session_start();
-if(!isset($_SESSION['username']) || !isset($_POST['eventId']))
-  header('Location: homepage.php');
-?>
+
 
 <form action="database/action_createThread.php" method="post" enctype="multipart/form-data">
   <label>Thread title:

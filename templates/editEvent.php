@@ -30,8 +30,14 @@
   </select>
 </br>
   <label>The event is:</br>
-    <input id="eventShowing0" type="radio" name="eventShowing" value="0">Public (will appear in searches and be visible by everyone) </br>
+    <?if($eventInfo['private'] == 0){?>
+    <input id="eventShowing0" type="radio" name="eventShowing" value="0" checked>Public (will appear in searches and be visible by everyone) </br>
     <input id="eventShowing0" type="radio" name="eventShowing" value="1">Private (will NOT appear in searches and users must be invited to be able to follow) </br>
+    <?}
+    else if($eventInfo['private'] == 1){?>
+      <input id="eventShowing0" type="radio" name="eventShowing" value="0">Public (will appear in searches and be visible by everyone) </br>
+      <input id="eventShowing0" type="radio" name="eventShowing" value="1" checked>Private (will NOT appear in searches and users must be invited to be able to follow) </br>
+    <?}?>
   </label>
 
   <label> Image for the event (Leave this blank if you want to keep the image the event has currently)</br>

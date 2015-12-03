@@ -1,9 +1,4 @@
-<?session_start();
-if(!isset($_SESSION['username']))
-  header('Location: homepage.php');
-?>
-
-<form action="database/action_createEvent.php" method="post" enctype="multipart/form-data">
+<form id="createEvent" action="database/action_createEvent.php" method="post" enctype="multipart/form-data">
   <label>Event name:
     <input id="eventName" type="text" name="eventName" maxlength="25">
   </label>
@@ -13,7 +8,7 @@ if(!isset($_SESSION['username']))
   </label>
 </br>
 <label>Description:</br>
-  <textarea rows="8" cols="80" maxlength="1000" name="eventDescription"></textarea>
+  <textarea id="eventDescription" rows="8" cols="80" maxlength="1000" name="eventDescription"></textarea>
 </label>
 </br>
 <label>Type of event
@@ -30,8 +25,8 @@ if(!isset($_SESSION['username']))
   </select>
 </br>
   <label>The event is:</br>
-    <input id="eventShowing0" type="radio" name="eventShowing" value="0">Public (will appear in searches and be visible by everyone) </br>
-    <input id="eventShowing0" type="radio" name="eventShowing" value="1">Private (will NOT appear in searches and users must be invited to be able to follow) </br>
+    <input id="eventShowing0" type="radio" name="eventShowing" value="0" checked>Public (will appear in searches and be visible by everyone) </br>
+    <input id="eventShowing1" type="radio" name="eventShowing" value="1">Private (will NOT appear in searches and users must be invited to be able to follow) </br>
   </label>
 
   <label> Image for the event (you will be able to add more later)</br>
