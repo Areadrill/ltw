@@ -19,14 +19,17 @@ function getEvents($ownerId){
     $stmt->execute(array($event['eid']));
     $attending = $stmt->fetch();
     ?>
-      <p class="event"> <a href="event.php?id=<?echo $event['eid']?>"><?echo $res['ename']?></a>  <?echo $res['edate']?> - <?echo $attending['attendees']?> attending </p>
-      <ul id="options">
+    <div class="event">
+      <h2><a href="event.php?id=<?echo $event['eid']?>"><?echo $res['ename']?></a></h2>
+      <span class="date"><?echo $res['edate']?></span>
+      <span class="attendees"><?echo $attending['attendees']?> attending </span>
+      <ul class="options">
         <li><a href="editEvent.php?id=<?echo $event['eid']?>">Edit</a></li>
         <li><a href="database/action_deleteEvent.php?id=<?echo $event['eid']?>">Delete</a></li>
         <li><a href="invite.php?id=<?echo $event['eid']?>">Invite users to this event</a></li>
         <li><a href="manageAlbums.php?eid=<?echo $event['eid']?>">Manage Albums</a></li>
       </ul>
-     </br>
+    </div>
   <?
   }
 }
