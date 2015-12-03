@@ -119,9 +119,6 @@ $imgId = $db->lastInsertId();
 $stmt = $db->prepare('UPDATE Event SET eimage=? WHERE eid=?');
 $stmt->execute(array($imgId, $eventId));
 
-
-$eventId = $db->lastInsertId();
-
 $stmt = $db->prepare('INSERT INTO EventOwner values(?, ?)');
 $stmt->execute(array($_SESSION['id'], $eventId));
 
