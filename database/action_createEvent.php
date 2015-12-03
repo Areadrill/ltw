@@ -41,11 +41,11 @@ if(!isset($_FILES['eventImage'])){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 
-$stmt = $db->prepare('SELECT max(eid) AS max FROM Event');
-$stmt->execute();
-$res = $stmt->fetch();
+$stmt = $db->prepare('INSERT INTO Event values(null, ?, ?, ?, ?, null, ?)');
+$stmt->execute(array($name, $date, $desc, $type, $showing));
+$eventId = $db->lastInsertId();
 
-$rootFileName = '../images/'.($res['max']+1);
+$rootFileName = '../images/'.($eventId);
 $originalsFN = $rootFileName.'/originals';
 $thumbsFN = $rootFileName.'/thumbs';
 
@@ -109,13 +109,16 @@ else{
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 
+
+
 $stmt = $db->prepare('INSERT INTO Image values(null, ?)');
-$filePath = substr($originalImagePath, 3);
+$filePath = substr($thumbImagePath, 3);
 $stmt->execute(array($filePath));
 $imgId = $db->lastInsertId();
 
-$stmt = $db->prepare('INSERT INTO Event values(null, ?, ?, ?, ?, ?, ?)');
-$stmt->execute(array($name, $date, $desc, $type, $imgId, $showing));
+$stmt = $db->prepare('UPDATE Event SET eimage=? WHERE eid=?');
+$stmt->execute(array($imgId, $eventId));
+
 
 $eventId = $db->lastInsertId();
 

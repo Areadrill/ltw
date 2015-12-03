@@ -37,24 +37,41 @@ $originalsFN = $rootFileName.'/originals';
 $thumbsFN = $rootFileName.'/thumbs';
 
 if($_FILES['eventImage']['name']){
-  $imageFormats = array('.png', '.jpg', '.jpeg', '.tiff', '.tif'); //por em JSON?
+  $imageFormats = array('.png', '.jpg', '.jpeg'); //por em JSON?
   $imageNotImage = TRUE;
   for($i = 0; $i < count($imageFormats); $i++){
     if(strpos($_FILES['eventImage']['name'], $imageFormats[$i], strlen($_FILES['eventImage']['name']) -4) !== FALSE){
       $imageNotImage = FALSE;
+      $ext = $imageFormats[$i];
       break;
     }
   }
   if(isset($imageNotImage) && !$imageNotImage){
     $originalImagePath = $originalsFN.'/'.$_FILES['eventImage']['name'];
     move_uploaded_file($_FILES['eventImage']['tmp_name'], $originalImagePath);
-    /*$imageSmall = imagecreatetruecolor(640, 480);
-    imagecopyresized($imageSmall, $original, 0, 0, 0, 0, $mediumwidth, $mediumheight, $width, $height);
-    $thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
-    imagejpeg($imageSmall, $thumbImagePath);*/ //Need to avriguate about image resizing
+    $imageSmall = imagecreatetruecolor(851, 315);
+    $originalInfo = getimagesize($originalImagePath);
 
+    switch($ext){
+      case '.png':
+        $original = imagecreatefrompng($originalImagePath);
+        imagecopyresized($imageSmall, $original, 0, 0, 0, 0, 851, 315, $originalInfo[0], $originalInfo[1]);
+        $thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
+        imagepng($imageSmall, $thumbImagePath);
+        break;
+      case '.jpeg': //intentional
+      case '.jpg':
+        $original = imagecreatefromjpeg($originalImagePath);
+        imagecopyresized($imageSmall, $original, 0, 0, 0, 0, 851, 315, $originalInfo[0], $originalInfo[1]);
+        $thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
+        imagejpeg($imageSmall, $thumbImagePath);
+        break;
+      default:
+        break;
+    }
+    $thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
     $stmt = $db->prepare('INSERT INTO Image values(null, ?)');
-    $filePath = substr($originalImagePath, 3);
+    $filePath = substr($thumbImagePath, 3);
     $stmt->execute(array($filePath));
     $imgId = $db->lastInsertId();
 
