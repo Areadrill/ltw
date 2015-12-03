@@ -10,11 +10,14 @@ function getEventThreads($eventId){
   $eventName = $stmt->fetch();
 
   ?>
-  <h1> Thread for <a href="event.php?id=<?echo $eventId?>"><?echo $eventName['ename']; //por imagem por cima??></a></h1>
-  <form id="formzinho" action="createThread.php" method="post">
-    <input type="hidden" name="eventId" value="<?echo $eventId?>">
-    <a href="createThread.php" onclick="document.getElementById('formzinho').submit(); return false;">Create your own thread</a>
-  </form>
+  <section id="threads">
+  <div id="threadIntro">
+    <h1> Threads  </h1>
+    <form id="formzinho" action="createThread.php" method="post">
+      <input type="hidden" name="eventId" value="<?echo $eventId?>">
+      <a href="createThread.php" onclick="document.getElementById('formzinho').submit(); return false;">Create your own thread</a>
+    </form>
+  </div>
   <?foreach($threads as $thread){
     $stmt = $db->prepare('SELECT uname FROM User WHERE uid=?');
     $stmt->execute(array($thread['creator']));
@@ -25,11 +28,13 @@ function getEventThreads($eventId){
     $comments = $stmt->fetch();
 
     ?>
-
-    <h2><a href="thread.php?id=<?echo $thread['tid']?>"><?echo $thread['title'];?></a></h2> <p>Created by: <?echo $thread['creator'];?></p>
-    <p>Comments: <?echo $comments['comments'];?></p>
-
-  <?}
+    <div class="thread">
+      <h2><a href="thread.php?id=<?echo $thread['tid']?>"><?echo $thread['title'];?></a></h2> <p>Created by: <?echo $thread['creator'];?></p>
+      <p>Comments: <?echo $comments['comments'];?></p>
+    </div>
+  <?}?>
+</section>
+<?
 }
 
 

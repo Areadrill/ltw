@@ -1,0 +1,111 @@
+body{
+  background: rgb(233, 234, 237);
+  font-family: helvetica, arial, sans-serif;
+}
+#event{
+  margin: auto;
+  width: 50%;
+  position: relative;
+}
+
+#coverImage{
+  position: relative;
+  width: 100%
+}
+
+#nameAndauthor{
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.022em;
+  color: white;
+}
+
+#author{
+  background-color: inherit;
+  font-size: 0.8em;
+  font-style: normal;
+  padding-right: 0.5em;
+}
+
+#eventTitle{
+  position: absolute;
+  top: 8em;
+  left: 1em;
+}
+
+#mainimage{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.eventInfo{
+  display: inline;
+}
+
+#followButton{
+  padding: 5px;
+  background-color: rgb(21, 158, 13);
+  border-radius: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color:white;
+}
+
+#followButton:hover{
+  background-color: rgb(15, 120, 9);
+}
+
+#unfollowButton{
+  padding: 5px;
+  background-color: rgb(208, 20, 42);
+  border-radius: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color:white;
+}
+
+#unfollowButton:hover{
+  background-color: rgb(152, 20, 36);
+}
+
+#date{
+  position: relative;
+  left: 35rem;
+}
+
+#description{
+  padding: 0.5em;
+  background-color: white;
+  border-radius: 10px;
+  width: 55rem;
+}
+
+#albums{
+  margin-top: 0.5em;
+  width: 25rem;
+  max-height: 20rem;
+  overflow-y: scroll;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#albums li{
+  display: inline-block;
+}
+#albums ul{
+  margin: 0;
+  padding: 0.5em;
+}
+
+.albumDisplay{
+  display: block;
+}
+
+#threads{
+  position:absolute;
+  top: 30rem;
+  left: 30rem;
+}
+
+#threadIntro{
+  background-color: white;
+}

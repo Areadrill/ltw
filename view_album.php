@@ -21,6 +21,7 @@ $albumImages = getAlbumImages($album);
 <html>
   <head>
     <?require_once('includes.php');?>
+    <script type="text/javascript" src="scripts/view_album.js"></script>
   </head>
   <body>
     <?require_once('templates/header.php');?>
