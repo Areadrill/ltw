@@ -1,3 +1,6 @@
+<div class="header"><h1>Creating Event</h1>
+<span> Please fill out the form below.</span>
+</div>
 <form id="createEvent" action="database/action_createEvent.php" method="post" enctype="multipart/form-data">
   <label>Event name:
     <input id="eventName" type="text" name="eventName" maxlength="25">
@@ -23,18 +26,19 @@
     <option>Fundraiser</option>
     <option>...</option>
   </select>
+</label>
 </br>
   <label>The event is:</br>
-    <input id="eventShowing0" type="radio" name="eventShowing" value="0" checked>Public (will appear in searches and be visible by everyone) </br>
-    <input id="eventShowing1" type="radio" name="eventShowing" value="1">Private (will NOT appear in searches and users must be invited to be able to follow) </br>
+    <input id="eventShowing0" type="radio" name="eventShowing" value="0" checked>Public  </br>
+    <input id="eventShowing1" type="radio" name="eventShowing" value="1">Private</br>
   </label>
 
   <label> Image for the event (you will be able to add more later)</br>
-          Make sure the image has resolution close to 851x315, otherwise you may experience distortion</br>
+      </br>
     <input id="eventImage" type="file" name="eventImage">
   </label>
 
   <p> Note: All of these options will be editable after the event is created. </p>
 
-  <input type="submit" value="Create" >
+  <input type="submit" id="submit" value="Create" >
 </form>

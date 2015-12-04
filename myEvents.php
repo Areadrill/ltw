@@ -9,6 +9,7 @@ if(!isset($_SESSION['username']))
 <html>
   <head>
     <?require_once('includes.php');?>
+    <link rel="stylesheet" type="text/css" href="stylesheets/myEvents.css" >
   </head>
   <body>
     <?require_once('templates/header.php');?>

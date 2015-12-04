@@ -6,6 +6,7 @@ if(!isset($_SESSION['username'])){
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="stylesheets/editEvent.css" >
     <?require_once('includes.php');?>
     <script type="text/javascript" src="scripts/createEventValidations.js" ></script>
   </head>
