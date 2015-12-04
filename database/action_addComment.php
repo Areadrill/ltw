@@ -1,20 +1,24 @@
 <?session_start();
   if(!isset($_POST['comment']) || !isset($_POST['threadId'])){
-    header('Location: ../homepage.php');
+    http_response_code(400);
     exit();
+  }
+
+  if(!isset($_SESSION['id'])){
+    http_response_code(403);
+    exit;
   }
 
   require_once('connect.php');
   $stmt = $db->prepare('INSERT INTO Comment values(null, ?, ?, ?)');
-  if($stmt)
-    $stmt->execute(array($_SESSION['username'], $_POST['threadId'], $_POST['comment']));
-  else{
-    header('Location: ../homepage.php');
-    exit();
+  $res = $stmt->execute(array($_SESSION['id'], $_POST['threadId'], $_POST['comment']));
+  if(!$res){
+    http_response_code(200);
+    echo "hello";
+    exit;
   }
-
-  echo "lel";
-  //header('Location: ../thread.php?id='.$_POST['threadId']);
-
+  else {
+    ?> <p><?echo $_POST['comment']?></p> <p class="userComment">by: <?echo $_SESSION['username']?></p><?
+  }
 
 ?>

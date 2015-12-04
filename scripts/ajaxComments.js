@@ -14,14 +14,19 @@ function checkValidText(){
 
 function ajaxComment(){
   event.preventDefault();
+  var formData = new FormData($(this)[0]);
+
   if(checkValidText()){
     $.ajax({
       url: "database/action_addComment.php",
       type: 'POST',
-      data: {comment: $("#commentText").val(), threadId: $("#tid").val()},
-      async: false,
+      data: formData,
+      async: true,
       success: function(response){
         console.log(response);
+
+        var comment = $.parseHTML(response);
+        $("p.userComment").last().after(comment);
       },
       cache: false,
       contentType: false,

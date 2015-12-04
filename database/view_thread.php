@@ -19,7 +19,7 @@ function getThread($id){
     }
   }
 
-  $stmt = $db->prepare('SELECT * FROM Comment WHERE thread=?');
+  $stmt = $db->prepare('SELECT *  FROM Comment,User WHERE thread=? AND Comment.user=User.uid');
   $stmt->execute(array($id));
   $comments = $stmt->fetchAll();?>
 
@@ -27,8 +27,9 @@ function getThread($id){
   <p><?echo $thread['fulltext']?></p>
   <p>Want to comment? Scroll down or <a href="#writeComment">click here!</a></p>
 
-  <?foreach($comments as $comment){?>
-    <p><?echo $comment['content']?></p> <p class="userComment">by: <?echo $comment['user']?></p>
+  <?foreach($comments as $comment){
+    ?>
+    <p><?echo $comment['content']?></p> <p class="userComment">by: <?echo $comment['uname']?></p>
   <?}?>
 
   <label id="writeComment">Comment here</label>
