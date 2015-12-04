@@ -1,0 +1,78 @@
+div.header{
+  width: 500px;
+  margin: 0 auto;
+  background-color: #10a853;
+  border-radius: 10px 10px 0 0;
+  color:white;
+  margin-top:15px;
+  border:2px solid #10a853;
+  font: 12pt Arial;
+  text-shadow: 1px 1px 1px #949494;
+
+}
+div.header h1 span{
+  text-decoration:underline;
+}
+
+div.header h1{
+  font: 22pt Arial;
+  padding:20px;
+  padding-bottom: 0;
+  padding-left:10%;
+  margin:0;
+
+}
+
+div.header>span{
+  font-size: 10pt;
+  display:block;
+  padding-left: 15%;
+  padding-bottom: 10px;
+}
+
+form{
+  margin:0 auto;
+  max-width: 500px;
+  border:2px solid #10a853;
+  background-color: white;
+}
+label{
+  padding-left: 10px;
+}
+
+label{
+  font-weight: bold;
+}
+label input, label textarea{
+  display:block;
+  margin-left: 20px;
+  margin-top: 10px;
+  width:80%;
+  border: 1px solid #10a853;
+}
+
+label input[type="radio"]{
+  display:inline-block;
+  width:auto;
+  clear:both
+}
+
+
+#submit:hover{
+
+}
+
+#submit{
+  background-color: #10a853;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius:6px;
+  color: white;
+  font-family: 'Oswald';
+  font-size: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  border:none;
+  margin:10px;
+  padding:4px;
+}
