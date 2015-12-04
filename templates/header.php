@@ -15,5 +15,13 @@
       <input type="text" name="searchWords" maxlength="25" placeholder="Search for events here">
       <input id="searchEvent" type="submit" value="Search" >
     </form>
+    <? if(isset($_SESSION["username"])){?>
+      <ul id="options">
+        <li> <a href="createEvent.php">New event</a> </li>
+        <li> <a href="myEvents.php"> My events </a></li>
+        <li> <a href="eventsFollowed.php"> Following </a></li>
+      </ul>
+
+    <?}?>
 
   </section>
