@@ -4,7 +4,7 @@ body{
 }
 #event{
   margin: auto;
-  width: 50%;
+  width: 60rem;
   position: relative;
 }
 
@@ -102,10 +102,29 @@ body{
 
 #threads{
   position:absolute;
-  top: 30rem;
-  left: 30rem;
+  top: 29rem;
+  left: 26rem;
+  width: 30rem;
+
 }
 
 #threadIntro{
+  margin-top: 0.5em;
+  padding: 0.5em;
   background-color: white;
+  border-radius: 10px;
+}
+
+.thread{
+  padding: 0.5em;
+  margin-top: 0.5em;
+  background-color: white;
+  border-radius: 10px;
+}
+
+a {
+  color: #10a853;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none; 
 }
