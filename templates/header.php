@@ -13,7 +13,7 @@
     <?//outro ficheiro? passar isto a javasript para dar resultados imediatos (a la google)? tb da pra fazer os 2...?>
     <form id="search" action="searchEvents.php" method="get" >
       <input type="text" name="searchWords" maxlength="25" placeholder="Search for events here">
-      <input type="submit" value="Search" >
+      <input id="searchEvent" type="submit" value="Search" >
     </form>
 
   </section>
