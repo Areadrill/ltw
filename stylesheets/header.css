@@ -12,6 +12,10 @@ body{
   float:right;
 }
 
+#login a{
+  color: black;
+}
+
 #search {
   float:right;
   margin-right: 2em;
