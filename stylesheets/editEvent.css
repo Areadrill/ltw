@@ -1,3 +1,7 @@
+body{
+  background-color: lightgrey;
+}
+
 div.header{
   width: 500px;
   margin: 0 auto;
@@ -73,6 +77,7 @@ label input[type="radio"]{
   text-decoration: none;
   cursor: pointer;
   border:none;
-  margin:10px;
+  width:100px;
+  margin:20px;
   padding:4px;
 }
