@@ -14,10 +14,23 @@ function getEventThreads($eventId){
   <div id="threadIntro">
     <h1> Threads  </h1>
     <form id="formzinho" action="createThread.php" method="post">
-      <input type="hidden" name="eventId" value="<?echo $eventId?>">
-      <a href="createThread.php" onclick="document.getElementById('formzinho').submit(); return false;">Create your own thread</a>
+      <input id="eventIdHidden" type="hidden" name="eventId" value="<?echo $eventId?>">
+      <a id="createThreadButton" href="javascript:;">Create your own thread</a>
     </form>
   </div>
+  <div id="threadCreation">
+    <form id="threadCreation" action="database/action_createThread.php" method="post" enctype="multipart/form-data">
+      <label>Title:</label>
+      <input type="text" name="threadTitle"/>
+      <br>
+      <label>Text:</label>
+      <br>
+      <textarea id="threadText" rows="8" cols="40" maxlength="1000" name="threadText"></textarea>
+      <br>
+      <input type="submit" value="Create thread!"/>
+     </form>
+  </div>
+
   <?foreach($threads as $thread){
     $stmt = $db->prepare('SELECT uname FROM User WHERE uid=?');
     $stmt->execute(array($thread['creator']));

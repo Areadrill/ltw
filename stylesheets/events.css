@@ -126,5 +126,35 @@ a {
   color: #10a853;
   font-style: normal;
   font-weight: bold;
-  text-decoration: none; 
+  text-decoration: none;
+}
+
+
+div#threadCreation{
+  background-color: white;
+  padding:0.5em;
+  border: 3px solid green;
+  background-color: grey;
+  display:none;
+}
+
+div#threadCreation label{
+  display:inline-block;
+  color:white;
+  font-size:15pt;
+  margin:5px;
+}
+
+div#threadCreation input, div#threadCreation textarea{
+  border:1px solid green;
+
+}
+
+div#threadCreation input[type=submit]{
+  background-color: #333333;
+  color:white;
+  text-decoration: none;
+  border:1px solid #444444;
+  padding:4px;
+
 }

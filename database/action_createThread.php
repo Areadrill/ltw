@@ -9,18 +9,19 @@ require_once('connect.php');
 $stmt = $db->prepare('SELECT count(tid) FROM Thread WHERE title=?');
 $stmt->execute(array($_POST['threadTitle']));
 $count = $stmt->fetch();
-
-if(count != 0){
+var_dump($count);
+if($count["count(tid)"] != 0){
   //mandar pra traz a dizer q ja exite um thread com esse nome (em vez doq ta abaixo)
-
-  header('Location: ../forum.php?id='.$_POST['eventId']);
+  http_response_code(422);
   exit();
 }
 
 $stmt = $db->prepare('INSERT INTO Thread values(null, ?, ?, ?, ?)');
 $stmt->execute(array($_POST['threadTitle'], $_SESSION['id'], $_POST['eventId'], $_POST['threadText']));
 
-
-
-header('Location: ../homepage.php');
+http_response_code(200);
 ?>
+<div class="thread">
+  <h2><a href="thread.php?id=<?$db->lastInsertId();?>"><?echo $_POST['threadTitle'];?></a></h2> <p>Created by: <?echo $_SESSION['username'];?></p>
+  <p>Comments:</p>
+</div>

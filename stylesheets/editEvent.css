@@ -68,8 +68,6 @@ label input[type="radio"]{
 
 #submit{
   background-color: #10a853;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
   border-radius:6px;
   color: white;
   font-family: 'Oswald';
