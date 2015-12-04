@@ -65,6 +65,7 @@ function uploadImage($file, $eid, $db){
   //verify image
   $path = $file["name"];
   $ext = pathinfo($path, PATHINFO_EXTENSION);
+  $ext = strtolower($ext);
   $allowed = in_array($ext, $imageFormats);
   if($allowed){
     $filename = "../images/".$eid.'/'.uniqid("",true).".".$ext;

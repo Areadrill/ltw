@@ -41,6 +41,7 @@ if(!isset($_FILES['eventImage'])){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 
+
 $stmt = $db->prepare('INSERT INTO Event values(null, ?, ?, ?, ?, null, ?)');
 $stmt->execute(array($name, $date, $desc, $type, $showing));
 $eventId = $db->lastInsertId();
@@ -62,15 +63,18 @@ if(!$success){
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 
-$imageFormats = array('.png', '.jpg', '.jpeg'); //por em JSON?
-$imageNotImage = TRUE;
-for($i = 0; $i < count($imageFormats); $i++){
-  if(strpos($_FILES['eventImage']['name'], $imageFormats[$i], strlen($_FILES['eventImage']['name']) -4) !== FALSE){
-    $imageNotImage = FALSE;
-    $ext = $imageFormats[$i];
-    break;
-  }
-}
+$imageFormats = array('png', 'jpg', 'jpeg');
+
+$ext = pathinfo($_FILES['eventImage']['name'], PATHINFO_EXTENSION);
+
+$ext = strtolower($ext);
+
+
+$imageNotImage = !in_array($ext, $imageFormats);
+
+
+
+
 if(!$imageNotImage){
   $originalImagePath = $originalsFN.'/'.$_FILES['eventImage']['name'];
   move_uploaded_file($_FILES['eventImage']['tmp_name'], $originalImagePath);
@@ -85,14 +89,14 @@ if(!$imageNotImage){
   $originalInfo = getimagesize($originalImagePath);
 
   switch($ext){
-    case '.png':
+    case 'png':
       $original = imagecreatefrompng($originalImagePath);
       imagecopyresized($imageSmall, $original, 0, 0, 0, 0, 851, 315, $originalInfo[0], $originalInfo[1]);
       $thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
       imagepng($imageSmall, $thumbImagePath);
       break;
-    case '.jpeg': //intentional
-    case '.jpg':
+    case 'jpeg': //intentional
+    case 'jpg':
       $original = imagecreatefromjpeg($originalImagePath);
       imagecopyresized($imageSmall, $original, 0, 0, 0, 0, 851, 315, $originalInfo[0], $originalInfo[1]);
       $thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];

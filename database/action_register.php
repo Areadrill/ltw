@@ -5,6 +5,8 @@
   $password = $_POST['Password'];
   $email = strtolower($_POST['mail']);
 
+echo $username;
+
   $stmt = $db->prepare('SELECT * FROM User WHERE uname=?');
   $stmt->execute(array($username));
   $res = $stmt->fetch();
@@ -40,6 +42,6 @@
   $passwordHashed = hash('sha256', $password);
   $stmt->execute(array($username, $passwordHashed, $salt, $email));
 
-  //header('Location: ../homepage.php');
+  header('Location: ../homepage.php');
   exit();
 ?>

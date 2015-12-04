@@ -3,7 +3,7 @@ $(document).ready(function(){
   });
 
 function updateFollowCount(count){
-  $("p.eventInfo").text(count +" attending");
+  $("p.eventInfo").first().text(count +" attending");
 }
 
 function setupHandlers(){
