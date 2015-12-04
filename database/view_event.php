@@ -35,6 +35,7 @@ function getEvent($id){
   $attendeeCount = $stmt->fetch();
   //print_r($attendeeCount);
 ?>
+<input id="eventIdField" type="text" value="<?echo $res["eid"];?>" hidden="hidden"/>
 <section id="event">
 <div id="coverImage">
 <img src="<?echo $imgPath['fpath']?>" id="mainimage"/>
@@ -51,7 +52,7 @@ foreach($following as $follower){
 }
 if(!$alreadyFollowing){
   ?><button id="followButton" class="eventInfo"> Follow </button>
-<?//<a href="database/addFollower.php?eventId=<?echo $res['eid']\?\>">?>
+<?//<a href="database/action_addFollower.php?eventId=<?echo $res['eid']\?\>">?>
 <?}
 else{
   ?><button id="unfollowButton" class="eventInfo"> Unfollow </button><?

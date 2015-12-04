@@ -12,7 +12,7 @@ function getUsersByName($searchString){
     <input type="submit" value="Search" >
   </form>
 
-  <form action="database/addFollower.php?eventId=<?echo $_GET['id']?>" method="post">
+  <form action="database/action_addFollower.php?eventId=<?echo $_GET['id']?>" method="post">
 
   <?if($searchString !== ''){foreach($users as $user){?>
     <label><?echo $user['uname']?></label> <input type="checkbox" name="users[]" value="<?echo $user['uid']?>" > <br>

@@ -10,6 +10,7 @@ require_once('database/view_event.php');
     <link rel="stylesheet" href="stylesheets/events.css" />
     <?require_once('includes.php');?>
     <script type="text/javascript" src="scripts/eventStyle.js"></script>
+    <script type="text/javascript" src="scripts/followunfollow.js"></script>
     <script type="text/javascript" src="scripts/eventThreads.js"></script>
 
   </head>

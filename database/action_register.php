@@ -40,6 +40,6 @@
   $passwordHashed = hash('sha256', $password);
   $stmt->execute(array($username, $passwordHashed, $salt, $email));
 
-  header('Location: ../homepage.php');
+  //header('Location: ../homepage.php');
   exit();
 ?>
