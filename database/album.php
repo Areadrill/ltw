@@ -58,8 +58,7 @@ function getAlbumAllowedEditors($aid){
   return $result;
 }
 
-function uploadImage($file){
-  require("connect.php");
+function uploadImage($file, $eid, $db){
 
   $imageFormats = array('png', 'jpg', 'jpeg');
 
@@ -68,13 +67,14 @@ function uploadImage($file){
   $ext = pathinfo($path, PATHINFO_EXTENSION);
   $allowed = in_array($ext, $imageFormats);
   if($allowed){
-    $filename = "images/albums/".uniqid("",true).".".$ext;
-    $fpath = $_SERVER["DOCUMENT_ROOT"]."/".$filename;
-    move_uploaded_file($file["tmp_name"], $fpath);
-    require("connect.php");
-    $stmt = $db->prepare("INSERT INTO Image values(null, ?)");
-    $stmt->execute(array($filename));
-    return $filename;
+    $filename = "../images/".$eid.'/'.uniqid("",true).".".$ext;
+    $fpath = PUBLIC_PATH.$filename;
+
+    move_uploaded_file($file["tmp_name"], $filename);
+
+    $stmt = $db->prepare('INSERT INTO Image values(null, ?)');
+    $stmt->execute(array(substr($filename,3)));
+    return $db->lastInsertId();
   }
 
   return $allowed;
@@ -82,14 +82,18 @@ function uploadImage($file){
 
 function addAlbumPhoto($albumId, $photo){
 require("connect.php");
-  $uploadResult = uploadImage($photo);
-  if($uploadResult){
 
+  $stmt = $db->prepare('SELECT eid FROM Album WHERE aid=?');
+  $stmt->execute(array($albumId));
+  $eventId = $stmt->fetch();
+
+  $uploadResult = uploadImage($photo, $eventId['eid'], $db);
+  if($uploadResult){
     $query = $db->prepare("SELECT iid FROM Image WHERE fpath=?");
     $query->execute(array($uploadResult));
-    $iid = $query->fetch()[0];
+    $iid = $query->fetch()["iid"];
     $stmt = $db->prepare("INSERT INTO ImageAlbum values(?,?)");
-    $stmt->execute(array( $iid, $albumId));
+    $stmt->execute(array( $uploadResult, $albumId));
   }
 }
 

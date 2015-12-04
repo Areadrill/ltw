@@ -1,6 +1,11 @@
-<?
 
-  //$_SERVER['DOCUMENT_ROOT'] = '/usr/users2/mieec2013/up201303462/public_html/proj';
- $db = new PDO("sqlite:". $_SERVER['DOCUMENT_ROOT'] . '/database/db/EventagerDB.db');
+<?
+if(!defined('PUBLIC_PATH')){
+define('PUBLIC_PATH',dirname(realpath(__FILE__)) . "/");
+define('BASE_PATH',dirname(PUBLIC_PATH));
+}
+
+$db = new PDO('sqlite:' . BASE_PATH . '/database/db/EventagerDB.db');
+
  $db->exec( 'PRAGMA foreign_keys = ON;' );
 ?>

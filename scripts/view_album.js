@@ -22,7 +22,7 @@ $(document).ready(function ()
         url: "database/action_uploadAlbumImage.php",
         type: 'POST',
         data: formData,
-        async: false,
+        async: true,
         success: function(response){
           var images = jQuery.parseJSON(response);
           var newImagePath = images[images.length-1]["fpath"];

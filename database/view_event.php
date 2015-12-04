@@ -75,12 +75,12 @@ else{
     $thumbPath = getAlbumThumbPath($album);
     ?>
     <li>
-      <span class="album">
+      <div class="album">
         <a href="view_album.php?id=<?echo $album['aid']?>" target="_blank">
           <img class="albumDisplay" src="<? print($thumbPath); ?>" alt="<? echo $album['nome']?>" width="110" height="90"/>
           <span class="albumName albumDisplay"> <? echo $album['nome']; ?> </span>
         </a>
-      </span>
+      </div>
     </li>
     <?
   }

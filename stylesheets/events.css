@@ -88,6 +88,10 @@ body{
   border-radius: 10px;
 }
 
+div.album{
+  display:inline-block;
+}
+
 #albums li{
   display: inline-block;
 }

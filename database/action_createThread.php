@@ -6,8 +6,8 @@ if(!isset($_SESSION['username']) || !isset($_POST['threadTitle']) || !isset($_PO
 }
 
 require_once('connect.php');
-$stmt = $db->prepare('SELECT count(tid) FROM Thread WHERE title=?');
-$stmt->execute(array($_POST['threadTitle']));
+$stmt = $db->prepare('SELECT count(tid) FROM Thread WHERE title=? AND event=?');
+$stmt->execute(array($_POST['threadTitle'], $_POST['eventId']));
 $count = $stmt->fetch();
 var_dump($count);
 if($count["count(tid)"] != 0){
