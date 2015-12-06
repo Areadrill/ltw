@@ -8,7 +8,7 @@ session_start();
   }
 
   require_once('connect.php');
-  $username = $_POST['Username'];
+  $username = strtolower($_POST['Username']);
   $sttmt = $db->prepare('SELECT uid, password, salt FROM User WHERE uname=?');
   $sttmt->execute(array($username));
  $res = $sttmt->fetch();
