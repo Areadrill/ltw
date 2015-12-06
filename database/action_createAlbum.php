@@ -1,6 +1,6 @@
 <?
 require_once("album.php");
-session_start();
+require_once('session_check.php');
 $albumName = $_POST["albumName"];
 $eventId = $_POST["eventId"];
 

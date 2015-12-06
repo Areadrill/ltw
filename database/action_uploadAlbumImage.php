@@ -1,5 +1,5 @@
 <?
-session_start();
+require_once('session_check.php');
 require_once("album.php");
 if(existsAlbum($_POST["albumId"])){
   addAlbumPhoto($_POST["albumId"],$_FILES["albumImage"]);

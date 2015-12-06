@@ -1,5 +1,5 @@
 <? //ISTO NAO VERIFICA SE HA OUTROS EVENTOS CRIADOS PELO MSM USER COM NOME IGUAL
-session_start();
+require_once('session_check.php');
 if(!isset($_SESSION['username'])){
   http_response_code(403);
   header('Location: ../homepage.php');
@@ -30,6 +30,15 @@ $owner = $stmt->fetch();
 if($_SESSION['id'] !== $owner['uid']){
   http_response_code(403);
   header('Location: ../homepage.php');
+  exit();
+}
+
+$stmt = $db->prepare('SELECT ename FROM Event WHERE ename=?');
+$stmt->execute(array($_POST['eventName']));
+$otherEvent = $stmt->fetch();
+if($otherEvent){
+  http_response_code(400);
+  header('Location: ../createEvent.php?fail=1');
   exit();
 }
 

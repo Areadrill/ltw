@@ -1,4 +1,4 @@
-<?session_start();
+<?require_once('session_check.php');
 if(!isset($_POST["aid"]) || !isset($_POST["iid"])){
   http_response_code(400);
   exit();

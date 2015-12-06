@@ -1,4 +1,4 @@
-<?session_start();
+<?require_once('session_check.php');
   if(!isset($_POST['comment']) || !isset($_POST['threadId']) || strlen($_POST['comment']) > 512){
     http_response_code(400);
     exit();

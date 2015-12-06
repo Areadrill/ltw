@@ -1,5 +1,5 @@
 <?
-session_start();
+require_once('session_check.php');
 if(!isset($_SESSION['username']) || !isset($_POST['threadTitle']) || !isset($_POST['threadText']) || !isset($_POST['eventId'])){
   http_response_code(400);
   header('Location: ../homepage.php');

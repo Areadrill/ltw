@@ -17,6 +17,8 @@ session_start();
     if(hash('sha256', $saltedPw) === $res['password']){
       $_SESSION['username'] = $username;
       $_SESSION['id'] = $res['uid'];
+      $_SESSION['tok'] = bin2hex(openssl_random_pseudo_bytes(50));
+
       if(isset($_POST['ajax'])){
         echo 0;
       }

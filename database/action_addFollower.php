@@ -1,5 +1,5 @@
 <?
-session_start();
+require_once('session_check.php');
 if(!isset($_SESSION['username'])){
   header('Location: ../homepage.php');
   exit();
