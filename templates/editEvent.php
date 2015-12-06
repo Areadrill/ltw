@@ -7,6 +7,7 @@
 <span> Please make your changes in the form below.</span>
 </div>
 <form id="editEvent" class="customForm" action="database/action_editEvent.php" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
   <label>Event name:
     <input id="eventName" type="text" name="eventName" maxlength="25" value="<?echo $eventInfo['ename']?>">
   </label>

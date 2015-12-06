@@ -31,6 +31,7 @@ $albumImages = getAlbumImages($album);
     <h1> <?echo $album['nome'];?></h1>
 
     <form id="uploadAlbumImage" enctype="multipart/form-data" hidden="hidden">
+      <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
       <label class="hidden" hidden="hidden">Album Number:
         <input id="uploadImageAlbumNumber" type="number" name="albumId" min="0" value="<?echo $_GET['id']?>"/>
       </label>
@@ -43,6 +44,7 @@ $albumImages = getAlbumImages($album);
     </form>
 
     <form id="renameAlbumForm" enctype="multipart/form-data" hidden="hidden">
+      <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
       <label >New Album Name:
         <input type="text" name="newName" min="0" value=""/>
       </label>

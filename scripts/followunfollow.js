@@ -11,7 +11,7 @@ function setupHandlers(){
     $("#unfollowButton").unbind();
     jQuery.post(
       "database/action_addFollower.php",
-      {eventId: $("#eventIdField").val(), delete: 1},
+      {eventId: $("#eventIdField").val(), delete: 1,   csrf: $("#csrf").val()},
       function(data){
         console.log(data);
         $("#unfollowButton").attr("id","followButton");
@@ -24,7 +24,7 @@ function setupHandlers(){
         $("#followButton").unbind();
         jQuery.post(
           "database/action_addFollower.php",
-          {eventId: $("#eventIdField").val()},
+          {eventId: $("#eventIdField").val(),   csrf: $("#csrf").val()},
           function(data){
             console.log(data);
             $("#followButton").attr("id","unfollowButton");

@@ -8,18 +8,19 @@ function getUsersByName($searchString){
   $users = $stmt->fetchAll();?>
 
   <form action="invite.php?id=<?echo $_GET['id']?>" method="post">
+    <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
     <input type="text" name="searchString" placeholder="Search for a user here">
     <input type="submit" value="Search" >
   </form>
 
   <form action="database/action_addFollower.php" method="post">
-
+    <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
   <?if($searchString !== ''){foreach($users as $user){?>
     <label><?echo $user['uname']?></label> <input type="checkbox" name="users[]" value="<?echo $user['uid']?>" > <br>
   <?}?>
 
     <input type="submit" value="Invite these people" >
-<?}?>	
+<?}?>
 	<input type="hidden" name="eventId" value="<?echo $_GET['id']?>">
 </form>
 <?}

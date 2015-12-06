@@ -6,4 +6,5 @@
     <input type="text" name="albumName"/>
   </label>
   <input type="submit">
+  <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
 </form>

@@ -2,6 +2,7 @@
 <span> Please fill out the form below.</span>
 </div>
 <form id="createEvent" class="customForm" action="database/action_createEvent.php" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
   <label>Event name:
     <input id="eventName" type="text" name="eventName" maxlength="25">
   </label>

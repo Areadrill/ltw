@@ -14,12 +14,14 @@ function getEventThreads($eventId){
   <div id="threadIntro">
     <h1> Threads  </h1>
     <form id="formzinho" action="createThread.php" method="post">
+      <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
       <input id="eventIdHidden" type="hidden" name="eventId" value="<?echo $eventId?>">
       <a id="createThreadButton" href="javascript:;">Create your own thread</a>
     </form>
   </div>
   <div id="threadCreation" class="hiddenForm">
     <form id="threadCreation" action="database/action_createThread.php" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
       <label>Title:</label>
       <input type="text" name="threadTitle"/>
       <br>

@@ -12,7 +12,8 @@ $(document).ready(function(){
       "database/action_createThread.php",
       {threadTitle: $("input[name=threadTitle]").val(),
         threadText: $("textarea[name=threadText]").val(),
-      eventId: $("#eventIdHidden").val()},
+      eventId: $("#eventIdHidden").val(),
+      csrf: $("#csrf").val()},
       function(data){
         var domElements = $.parseHTML(data);
         $("section#threads").append(domElements);
@@ -31,7 +32,7 @@ $(document).ready(function(){
     event.preventDefault();
     $.post(
       "database/action_createAlbum.php",
-      {albumName: $("input[name=albumName]").val(), eventId:$("#eventIdField").val()},
+      {albumName: $("input[name=albumName]").val(), eventId:$("#eventIdField").val(), csrf: $("#csrf").val()},
       function(data){
         console.log(data);
         location.reload(true);

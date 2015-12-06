@@ -1,6 +1,7 @@
 
 
 <form id="createThread" action="database/action_createThread.php" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
   <label>Thread title:
     <input id="threadTitle" type="text" name="threadTitle" maxlength="50">
   </label>
