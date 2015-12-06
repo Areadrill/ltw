@@ -134,7 +134,7 @@ a {
 }
 
 
-div#threadCreation{
+div.hiddenForm{
   background-color: white;
   padding:0.5em;
   border: 3px solid green;
@@ -142,19 +142,19 @@ div#threadCreation{
   display:none;
 }
 
-div#threadCreation label{
+div.hiddenForm label{
   display:inline-block;
   color:white;
   font-size:15pt;
   margin:5px;
 }
 
-div#threadCreation input, div#threadCreation textarea{
+div.hiddenForm input, div#threadCreation textarea{
   border:1px solid green;
 
 }
 
-div#threadCreation input[type=submit]{
+div.hiddenForm input[type=submit]{
   background-color: #333333;
   color:white;
   text-decoration: none;

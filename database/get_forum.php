@@ -18,7 +18,7 @@ function getEventThreads($eventId){
       <a id="createThreadButton" href="javascript:;">Create your own thread</a>
     </form>
   </div>
-  <div id="threadCreation">
+  <div id="threadCreation" class="hiddenForm">
     <form id="threadCreation" action="database/action_createThread.php" method="post" enctype="multipart/form-data">
       <label>Title:</label>
       <input type="text" name="threadTitle"/>

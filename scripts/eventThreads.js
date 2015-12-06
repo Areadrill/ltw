@@ -1,6 +1,8 @@
 $(document).ready(function(){
   $("#createThreadButton").click(function(){
+    $("#albumCreation").hide();
     $("#threadCreation").show(500);
+
   });
 
   $("#threadCreation form").submit(function(){
@@ -19,4 +21,25 @@ $(document).ready(function(){
         alert("Thread by that name already exists");
       });
   });
+
+  $("#createAlbumButton").click(function(){
+    $("#threadCreation").hide();
+    $("#albumCreation").show(500);
+  });
+
+  $("#albumCreationForm").submit(function(){
+    event.preventDefault();
+    console.log();
+    $.post(
+      "database/action_createAlbum.php",
+      {albumName: $("input[name=albumName]").val(), eventId:$("#eventIdField").val()},
+      function(data){
+        console.log(data);
+        //location.reload(true);
+      }
+    ).fail(function(){
+      alert("Album by that name could not be created.");
+    });
+  });
+
 });
