@@ -30,7 +30,7 @@ echo $username;
   $stmt->execute(array($email));
   $res1 = $stmt->fetch();
   if($res1){
-    header('Location: ../templates/register.php?fail=2);
+    header('Location: ../templates/register.php?fail=2');
     exit();
   }
 

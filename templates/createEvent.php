@@ -49,3 +49,4 @@
 <?}
 else if(isset($_GET['fail']) && $_GET['fail'] ==2){?>
   <p id="failmsg">Something went wrong with the image upload.</p>
+<?}?>
