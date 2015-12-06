@@ -1,4 +1,4 @@
-<? //ISTO NAO VERIFICA SE HA OUTROS EVENTOS CRIADOS PELO MSM USER COM NOME IGUAL
+<?
 session_start();
 if(!isset($_SESSION['username'])){
   http_response_code(403);
@@ -20,12 +20,20 @@ if(strlen('eventName') == 0 || strlen('eventName') > 25 || strlen('eventDescript
 
 require_once('connect.php');
 
-if(!isset($_FILES['eventImage'])){
+if(!isset($_FILES['eventImage']) || $_FILES['eventImage']['error'] == 1){
   http_response_code(400);
-  header('Location: ../createEvent.php');
+  header('Location: ../createEvent.php?fail=1');
   exit();
 }
 
+$stmt = $db->prepare('SELECT eid FROM Event WHERE ename=?');
+$stmt->execute(array($_POST['eventName']));
+$event = $stmt->fetch();
+if($event['eid']){
+  http_response_code(400);
+  header('Location: ../createEvent.php?fail=1');
+  exit();
+}
 
 
 $stmt = $db->prepare('INSERT INTO Event values(null, ?, ?, ?, ?, null, ?)');

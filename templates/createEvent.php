@@ -42,3 +42,7 @@
 
   <input type="submit" id="submit" value="Create" >
 </form>
+
+<?if(isset($_GET['fail'])){?>
+  <p id="failmsg">You've alrady created an event by that name.</p>
+<?}?>
