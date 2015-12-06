@@ -74,11 +74,30 @@ function getEventsUserFollows($uid){
     $stmt->execute(array($event['eid']));
     $eventInfo = $stmt->fetch();
 
-    $stmt = $db->prepare('SELECT count(uid) AS attendees FROM EventFollower WHERE uid=?');
-    $stmt->execute(array($uid));
+    $stmt = $db->prepare('SELECT count(uid) AS attendees FROM EventFollower WHERE eid=?');
+    $stmt->execute(array($event['eid']));
     $attending = $stmt->fetch();?>
     <p><a href="event.php?id=<?echo $event['eid']?>"><?echo $eventInfo['ename']?></a> - <?echo $attending['attendees']?> attending</p>
   <?}
+}
+
+function getEventsByType($type){
+  require('database/connect.php');
+  $stmt = $db->prepare('SELECT * FROM Event WHERE type=?');
+  $stmt->execute(array($type));
+  $events = $stmt->fetchAll();
+
+  foreach($events as $event){
+    if(!$event['private']){
+      $stmt = $db->prepare('SELECT count(uid) AS attendees FROM EventFollower WHERE eid=?');
+      $stmt->execute(array($event['eid']));
+      $attending = $stmt->fetch();
+      ?>
+      <p class="event"> <a href="event.php?id=<?echo $event['eid']?>"><?echo $event['ename']?></a>  <?echo $event['edate']?> - <?echo $attending['attendees']?> attending </p>
+     </br>
+  <?
+    }
+  }
 }
 
 ?>
