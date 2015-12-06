@@ -6,6 +6,11 @@ if(!isset($_POST["aid"]) || !isset($_POST["newName"])){
   exit;
 }
 
+if(strlen($_POST['newName']) == 0 || strlen($_POST['newName']) > 50){
+  http_response_code(400);
+  exit();
+}
+
 if(!isset($_SESSION["id"])){
   http_response_code(401);
   exit;

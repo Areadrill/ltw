@@ -1,5 +1,16 @@
-<?
+<?session_start();
   require_once('connect.php');
+
+  if(!isset($_POST['Username']) || !isset($_POST['Password']) || !isset($_POST['mail'])){
+    http_response_code('400');
+    header('Location: ../register.php');
+    exit();
+  }
+  else if(strlen($_POST['Username']) == 0 || strlen($_POST['Username']) > 25 || strlen($_POST['Password']) == 0 || strlen($_POST['mail']) == 0){
+    http_response_code('400');
+    header('Location: ../register.php');
+    exit();
+  }
 
   $username = strtolower($_POST['Username']);
   $password = $_POST['Password'];
@@ -19,7 +30,7 @@ echo $username;
   $stmt->execute(array($email));
   $res1 = $stmt->fetch();
   if($res1){
-    header('Location: ../templates/register.php?fail=2');
+    header('Location: ../templates/register.php?fail=2);
     exit();
   }
 
@@ -42,6 +53,11 @@ echo $username;
   $passwordHashed = hash('sha256', $password);
   $stmt->execute(array($username, $passwordHashed, $salt, $email));
 
+  $userId = $db->lastInsertId();
+
+  $_SESSION['username'] = $username;
+  $_SESSION['id'] = $userId;
+
   header('Location: ../homepage.php');
-  exit();
+  //exit();
 ?>

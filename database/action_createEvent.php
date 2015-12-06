@@ -1,44 +1,29 @@
 <? //ISTO NAO VERIFICA SE HA OUTROS EVENTOS CRIADOS PELO MSM USER COM NOME IGUAL
 session_start();
 if(!isset($_SESSION['username'])){
+  http_response_code(403);
   header('Location: ../homepage.php');
+  exit();
+}
+
+if(!isset($_POST['eventName']) || !isset($_POST['eventDate']) || !isset($_POST['eventDescription']) || !isset($_POST['eventType']) || !isset($_POST['eventShowing'])){
+  http_response_code(400);
+  header('Location: ../createEvent.php');
+  exit();
+}
+
+if(strlen('eventName') == 0 || strlen('eventName') > 25 || strlen('eventDescription') == 0 || strlen('eventDescription') > 1000){
+  http_response_code(400);
+  header('Location: ../createEvent.php');
   exit();
 }
 
 require_once('connect.php');
 
-$name = $_POST['eventName'];
-if(!$name){
-  //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
-}
-echo $name;
-
-$date = $_POST['eventDate'];
-if(!$date){
-  //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
-}
-echo $date;
-
-$desc = $_POST['eventDescription'];
-if(!$desc){
-  //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
-}
-echo $desc;
-
-$type = $_POST['eventType'];
-if(!$type){
-  //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
-}
-echo $type;
-
-$showing = $_POST['eventShowing'];
-if(!$showing){
-  //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
-}
-echo $showing;
-
 if(!isset($_FILES['eventImage'])){
-  //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
+  http_response_code(400);
+  header('Location: ../createEvent.php');
+  exit();
 }
 
 

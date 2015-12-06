@@ -1,6 +1,6 @@
 <form id="register" action="database/action_register.php" method="post">
   <label>Username:
-    <input id="uname" type="text" name="Username">
+    <input id="uname" type="text" name="Username" maxlength="25">
   </label>
 </br>
   <label>Password:
