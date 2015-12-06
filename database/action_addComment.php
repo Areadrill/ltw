@@ -1,5 +1,5 @@
 <?session_start();
-  if(!isset($_POST['comment']) || !isset($_POST['threadId'])){
+  if(!isset($_POST['comment']) || !isset($_POST['threadId']) || strlen($_POST['comment']) > 512){
     http_response_code(400);
     exit();
   }

@@ -1,5 +1,12 @@
 <?
 session_start();
+
+  if(!isset($_POST['Username']) || !isset($_POST['Password']) || strlen($_POST['Username']) > 25){
+    http_response_code(400);
+    header('Location: ../homepage.php');
+    exit();
+  }
+
   require_once('connect.php');
   $username = $_POST['Username'];
   $sttmt = $db->prepare('SELECT uid, password, salt FROM User WHERE uname=?');
