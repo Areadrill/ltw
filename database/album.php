@@ -117,7 +117,8 @@ require("connect.php");
   function createAlbum($eventId, $nome){
     require("connect.php");
     $stmt = $db->prepare('INSERT INTO Album values(null, ?, ?)');
-    $stmt->execute(array($nome, $eventId));
+    $res = $stmt->execute(array($nome, $eventId));
+    return $res;
   }
 
   function getAlbumThumbPath($album){
