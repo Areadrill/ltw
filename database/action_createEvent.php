@@ -22,7 +22,7 @@ require_once('connect.php');
 
 if(!isset($_FILES['eventImage']) || $_FILES['eventImage']['error'] == 1 || !file_exists($_FILES['eventImage']['tmp_name']) || !is_uploaded_file($_FILES['eventImage']['tmp_name'])){
   http_response_code(400);
-  header('Location: ../createEvent.php?fail=1');
+  header('Location: ../createEvent.php?fail=2');
   exit();
 }
 

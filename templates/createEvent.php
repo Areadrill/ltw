@@ -43,6 +43,9 @@
   <input type="submit" id="submit" value="Create" >
 </form>
 
-<?if(isset($_GET['fail'])){?>
-  <p id="failmsg">The event could not be created at this time, please check if the name is unique.</p>
-<?}?>
+
+<?if(isset($_GET['fail']) && $_GET['fail'] == 1){?>
+  <p id="failmsg">You've alrady created an event by that name.</p>
+<?}
+else if(isset($_GET['fail']) && $_GET['fail'] ==2){?>
+  <p id="failmsg">Something went wrong with the image upload.</p>
