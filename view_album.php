@@ -61,6 +61,7 @@ $albumImages = getAlbumImages($album);
     <?}?>
     <ul class="albumImageList">
 
+
     <? foreach($albumImages as $image){
       ?>
         <li>
