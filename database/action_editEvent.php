@@ -37,7 +37,7 @@ $stmt = $db->prepare('SELECT ename FROM Event WHERE eid=?');
 $stmt->execute(array($_POST['eventId']));
 $oldName = $stmt->fetch();
 
-if($oldName['ename'] != $POST['eventName']){
+if($oldName['ename'] != $_POST['eventName']){
   $stmt = $db->prepare('SELECT ename FROM Event WHERE ename=?');
   $stmt->execute(array($_POST['eventName']));
   $otherEvent = $stmt->fetch();
