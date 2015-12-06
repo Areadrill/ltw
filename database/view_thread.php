@@ -21,9 +21,15 @@ function getThread($id){
 
   $stmt = $db->prepare('SELECT *  FROM Comment,User WHERE thread=? AND Comment.user=User.uid');
   $stmt->execute(array($id));
-  $comments = $stmt->fetchAll();?>
+  $comments = $stmt->fetchAll();
 
-  <h1><?echo $thread['title']?></h1> <p>Created by: <?echo $thread['creator']?></p>
+  $stmt = $db->prepare('SELECT uname FROM User WHERE uid=?');
+  $stmt->execute(array($thread['creator']));
+  $uname = $stmt->fetch();
+  ?>
+
+
+  <h1><?echo $thread['title']?></h1> <p>Created by: <?echo $uname['uname']?></p>
   <p><?echo $thread['fulltext']?></p>
   <p>Want to comment? Scroll down or <a href="#writeComment">click here!</a></p>
 
