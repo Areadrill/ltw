@@ -66,13 +66,16 @@ function uploadImage($file, $eid, $db){
   $path = $file["name"];
   $ext = pathinfo($path, PATHINFO_EXTENSION);
   $ext = strtolower($ext);
-  $allowed = in_array($ext, $imageFormats);
+  $allowed = in_array($ext, $imageFormats) || is_uploaded_file($file["tmp_name"]) || file_exists($file["tmp_name"]);
   if($allowed){
     $filename = "../images/".$eid.'/'.uniqid("",true).".".$ext;
     $fpath = PUBLIC_PATH.$filename;
 
-    move_uploaded_file($file["tmp_name"], $filename);
-
+    $res = move_uploaded_file($file["tmp_name"], $filename);
+    if(!$res){
+      http_response_code(500);
+      exit;
+    }
     $stmt = $db->prepare('INSERT INTO Image values(null, ?)');
     $stmt->execute(array(substr($filename,3)));
     return $db->lastInsertId();

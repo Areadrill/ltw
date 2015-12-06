@@ -20,7 +20,7 @@ if(strlen('eventName') == 0 || strlen('eventName') > 25 || strlen('eventDescript
 
 require_once('connect.php');
 
-if(!isset($_FILES['eventImage']) || $_FILES['eventImage']['error'] == 1){
+if(!isset($_FILES['eventImage']) || $_FILES['eventImage']['error'] == 1 || !file_exists($_FILES['eventImage']['tmp_name']) || !is_uploaded_file($_FILES['eventImage']['tmp_name'])){
   http_response_code(400);
   header('Location: ../createEvent.php?fail=2');
   exit();
@@ -68,7 +68,11 @@ $imageNotImage = !in_array($ext, $imageFormats);
 
 if(!$imageNotImage){
   $originalImagePath = $originalsFN.'/'.$_FILES['eventImage']['name'];
-  move_uploaded_file($_FILES['eventImage']['tmp_name'], $originalImagePath);
+  $res = move_uploaded_file($_FILES['eventImage']['tmp_name'], $originalImagePath);
+  if(!$res){
+    http_response_code(500);
+    exit();
+  }
   //smaller image
   /*$thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
   $imagick = new Imagick();
