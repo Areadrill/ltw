@@ -28,7 +28,7 @@ $(document).ready(function ()
           var images = jQuery.parseJSON(response);
           var newImagePath = images[images.length-1]["fpath"];
           var newImageElement = $("ul.albumImageList li").first().clone();
-          newImageElement.children("a").first().children("img").first().attr("src", newImagePath);
+          newImageElement.children("a").attr("href", newImagePath).first().children("img").first().attr("src", newImagePath);
           newImageElement.appendTo("ul.albumImageList");
           $(this).attr("hidden", "hidden");
         },

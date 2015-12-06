@@ -85,10 +85,20 @@ else{
     </li>
     <?
   }
-
 ?>
+  <a id="createAlbumButton" href="javascript:;">Add Album</a>
 </ul>
 </div>
+
+<div id="albumCreation" class="hiddenForm">
+  <form id="albumCreationForm" action="database/action_createAlbum.php" method="post" enctype="multipart/form-data">
+    <label>Album Name:</label>
+    <input type="text" name="albumName"/>
+    <br>
+    <input type="submit" value="Create album!"/>
+   </form>
+</div>
+
 <?
 getEventThreads($res['eid']);?>
 </section>
