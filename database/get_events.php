@@ -27,7 +27,6 @@ function getEvents($ownerId){
         <li><a href="editEvent.php?id=<?echo $event['eid']?>">Edit</a></li>
         <li><a href="database/action_deleteEvent.php?id=<?echo $event['eid']?>">Delete</a></li>
         <li><a href="invite.php?id=<?echo $event['eid']?>">Invite users to this event</a></li>
-        <li><a href="manageAlbums.php?eid=<?echo $event['eid']?>">Manage Albums</a></li>
       </ul>
     </div>
   <?
@@ -48,7 +47,7 @@ function getEventsByName($searchString){
       $attending = $stmt->fetch();
       ?>
       <p class="event"> <a href="event.php?id=<?echo $event['eid']?>"><?echo $event['ename']?></a>  <?echo $event['edate']?> - <?echo $attending['attendees']?> attending </p>
-     
+
   <?
     }
   }
