@@ -1,7 +1,7 @@
 <div class="header"><h1>Creating Event</h1>
 <span> Please fill out the form below.</span>
 </div>
-<form id="createEvent" action="database/action_createEvent.php" method="post" enctype="multipart/form-data">
+<form id="createEvent" class="customForm" action="database/action_createEvent.php" method="post" enctype="multipart/form-data">
   <label>Event name:
     <input id="eventName" type="text" name="eventName" maxlength="25">
   </label>

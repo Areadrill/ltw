@@ -1,4 +1,8 @@
-<form id="register" action="database/action_register.php" method="post">
+<div class="header"><h1>Registering account</h1>
+<span> Please fill out the form below.</span>
+</div>
+
+<form id="register" class="customForm" action="database/action_register.php" method="post">
   <label>Username:
     <input id="uname" type="text" name="Username" maxlength="25">
   </label>

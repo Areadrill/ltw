@@ -29,6 +29,6 @@ $stmt->execute(array($_POST['threadTitle'], $_SESSION['id'], $_POST['eventId'], 
 http_response_code(200);
 ?>
 <div class="thread">
-  <h2><a href="thread.php?id=<?$db->lastInsertId();?>"><?echo $_POST['threadTitle'];?></a></h2> <p>Created by: <?echo $_SESSION['username'];?></p>
+  <h2><a href="thread.php?id=<?echo $db->lastInsertId();?>"><?echo $_POST['threadTitle'];?></a></h2> <p>Created by: <?echo $_SESSION['username'];?></p>
   <p>Comments:</p>
 </div>

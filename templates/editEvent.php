@@ -6,7 +6,7 @@
 <div class="header"><h1>Editing Event <span><?echo $eventInfo["ename"]; ?></span></h1>
 <span> Please make your changes in the form below.</span>
 </div>
-<form id="editEvent" action="database/action_editEvent.php" method="post" enctype="multipart/form-data">
+<form id="editEvent" class="customForm" action="database/action_editEvent.php" method="post" enctype="multipart/form-data">
   <label>Event name:
     <input id="eventName" type="text" name="eventName" maxlength="25" value="<?echo $eventInfo['ename']?>">
   </label>

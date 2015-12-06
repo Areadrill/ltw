@@ -34,20 +34,20 @@ div.header>span{
   padding-bottom: 10px;
 }
 
-form{
+form.customForm{
   margin:0 auto;
   max-width: 500px;
   border:2px solid #10a853;
   background-color: white;
 }
-label{
+form.customForm label{
   padding-left: 10px;
 }
 
-label{
+form.customForm label{
   font-weight: bold;
 }
-label input, label textarea{
+form.customForm label input, form.customForm label textarea{
   display:block;
   margin-left: 20px;
   margin-top: 10px;
@@ -55,7 +55,7 @@ label input, label textarea{
   border: 1px solid #10a853;
 }
 
-label input[type="radio"]{
+form.customForm label input[type="radio"]{
   display:inline-block;
   width:auto;
   clear:both
