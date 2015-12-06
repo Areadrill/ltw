@@ -37,7 +37,7 @@ $stmt = $db->prepare('SELECT ename FROM Event WHERE eid=?');
 $stmt->execute(array($_POST['eventId']));
 $oldName = $stmt->fetch();
 
-if($oldName != $POST['eventName']){
+if($oldName['ename'] != $POST['eventName']){
   $stmt = $db->prepare('SELECT ename FROM Event WHERE ename=?');
   $stmt->execute(array($_POST['eventName']));
   $otherEvent = $stmt->fetch();
@@ -105,11 +105,11 @@ if($_FILES['eventImage']['name']){
 
 if(isset($imageChanged) && $imageChanged === TRUE){
   $stmt = $db->prepare('UPDATE Event SET ename=?, edate=?, description=?, type=?, eimage=?, private=? WHERE eid=?');
-  $stmt->execute(array($POST['eventName'], $POST['eventDate'], $POST['eventDescription'], $POST['eventType'], $imgId, $POST['eventShowing'], $eventId));
+  $stmt->execute(array($_POST['eventName'], $_POST['eventDate'], $_POST['eventDescription'], $_POST['eventType'], $imgId, $_POST['eventShowing'], $eventId));
 }
 else{
   $stmt = $db->prepare('UPDATE Event SET ename=?, edate=?, description=?, type=?, private=? WHERE eid=?');
-  $stmt->execute(array($POST['eventName'], $POST['eventDate'], $POST['eventDescription'], $POST['eventType'], $POST['eventShowing'], $eventId));
+  $stmt->execute(array($_POST['eventName'], $_POST['eventDate'], $_POST['eventDescription'], $_POST['eventType'], $_POST['eventShowing'], $eventId));
 }
 header('Location: ../event.php?id='.$eventId['eid']);
 
