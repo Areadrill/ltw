@@ -15,10 +15,10 @@ $(document).ready(function(){
       eventId: $("#eventIdHidden").val(),
       csrf: $("#csrf").val()},
       function(data){
-        var domElements = $.parseHTML(data);
-        $("section#threads").append(domElements);
-        $("#threadCreation").hide(400);
+	console.log(data);
+	location.reload();
       }).fail(function(){
+
         alert("Thread by that name already exists");
       });
   });
