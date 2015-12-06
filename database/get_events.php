@@ -48,7 +48,7 @@ function getEventsByName($searchString){
       $attending = $stmt->fetch();
       ?>
       <p class="event"> <a href="event.php?id=<?echo $event['eid']?>"><?echo $event['ename']?></a>  <?echo $event['edate']?> - <?echo $attending['attendees']?> attending </p>
-     </br>
+     
   <?
     }
   }
@@ -94,7 +94,7 @@ function getEventsByType($type){
       $attending = $stmt->fetch();
       ?>
       <p class="event"> <a href="event.php?id=<?echo $event['eid']?>"><?echo $event['ename']?></a>  <?echo $event['edate']?> - <?echo $attending['attendees']?> attending </p>
-     </br>
+
   <?
     }
   }
