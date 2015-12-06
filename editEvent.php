@@ -1,6 +1,6 @@
 <?session_start();
 if (!isset($_SESSION['username']) || !isset($_GET['id'])) {
-  header('Location: homepage.php');
+  header('Location: index.php');
 }
 ?>
 <!DOCTYPE html>

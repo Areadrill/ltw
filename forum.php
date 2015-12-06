@@ -1,7 +1,7 @@
 <?
 session_start();
 if(!isset($_GET['id'])){
-  header('Location: homepage.php');
+  header('Location: index.php');
 }
 require_once('database/get_forum.php');
 ?>

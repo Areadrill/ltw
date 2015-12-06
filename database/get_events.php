@@ -1,6 +1,6 @@
 <?//isto n precisa d ser um ficheiro novo...
 if(!isset($_SESSION['id'])){
-  header('Location: homepage.php');
+  header('Location: index.php');
 }
 
 function getEvents($ownerId){

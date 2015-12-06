@@ -14,5 +14,5 @@ if(existsAlbum($_POST["albumId"])){
 }
 else{
   http_response_code(400);
-  header("Location: ../homepage.php");
+  header("Location: ../index.php");
 }

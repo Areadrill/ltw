@@ -1,6 +1,6 @@
 <?
 if(!isset($_SESSION['id'])){
-  header('Location: homepage.php');
+  header('Location: index.php');
   exit();
 }
 

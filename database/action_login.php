@@ -3,7 +3,7 @@ session_start();
 
   if(!isset($_POST['Username']) || !isset($_POST['Password']) || strlen($_POST['Username']) > 25){
     http_response_code(400);
-    header('Location: ../homepage.php');
+    header('Location: ../index.php');
     exit();
   }
 
@@ -23,7 +23,7 @@ session_start();
         echo 0;
       }
       else{
-          header('Location: ../homepage.php');
+          header('Location: ../index.php');
       }
     }
   }
@@ -32,7 +32,7 @@ session_start();
     echo "Login failed";
   }
   else{
-      header('Location: ../homepage.php');
+      header('Location: ../index.php');
   }
   exit();
 ?>

@@ -14,7 +14,7 @@ function getThread($id){
     $stmt->execute(array($thread['event']));
     $followers = $stmt->fetchAll();
     if(!in_array($_SESSION['id'], $followers, TRUE)){
-      header('Location: homepage.php');
+      header('Location: index.php');
       exit();
     }
   }

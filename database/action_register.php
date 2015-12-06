@@ -60,6 +60,6 @@ echo $username;
   $_SESSION['id'] = $userId;
   $_SESSION['tok'] = bin2hex(openssl_random_pseudo_bytes(50));
 
-  header('Location: ../homepage.php');
+  header('Location: ../index.php');
   //exit();
 ?>

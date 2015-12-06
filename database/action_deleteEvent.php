@@ -12,6 +12,6 @@ foreach($uid_results as $result){
     header("Location: ../myEvents.php");
   }
 }
-header("Location: ../homepage.php");
+header("Location: ../index.php");
 
 ?>

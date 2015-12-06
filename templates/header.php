@@ -1,6 +1,6 @@
 
   <section id="header">
-    <a href="homepage.php"><img src="images/site/logoSmallestCropped.png" /></a>
+    <a href="index.php"><img src="images/site/logoSmallestCropped.png" /></a>
     <section id="login">
       <? if(isset($_SESSION['username'])){?>
         <div id="logged"> Logged in as <?echo $_SESSION['username']?>. <a href="logout.php" class="logout"> Logout </a></div>
