@@ -9,10 +9,11 @@ if(!isset($_SESSION['username']))
 <html>
   <head>
     <?require_once('includes.php');?>
+    <link rel="stylesheet" href="stylesheets/eventsFollowed.css" >
   </head>
   <body>
     <?require_once('templates/header.php');?>
-    <p>Search by type:</p>
+    <span>Search by type:</span>
     <form action="searchEvents.php" method="get">
       <label>Type of event
         <select id="type" name="eventType">
