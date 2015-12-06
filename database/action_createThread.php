@@ -2,13 +2,13 @@
 require_once('session_check.php');
 if(!isset($_SESSION['username']) || !isset($_POST['threadTitle']) || !isset($_POST['threadText']) || !isset($_POST['eventId'])){
   http_response_code(400);
-  header('Location: ../index.php');
+  
   exit();
 }
 
 if(strlen($_POST['threadTitle']) == 0 || strlen($_POST['threadTitle']) > 1000){
   http_response_code(400);
-  header('Location: ../index.php');
+
   exit();
 }
 
