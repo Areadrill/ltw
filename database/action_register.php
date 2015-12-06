@@ -1,5 +1,5 @@
 <?session_start();
-exit();
+
   require_once('connect.php');
 
   if(!isset($_POST['Username']) || !isset($_POST['Password']) || !isset($_POST['mail'])){
