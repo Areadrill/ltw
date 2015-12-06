@@ -18,7 +18,7 @@
     exit;
   }
   else {
-    ?> <p><?echo $_POST['comment']?></p> <p class="userComment">by: <?echo $_SESSION['username']?></p><?
+    ?> <div class="comment"><p><?echo $_POST['comment']?></p> <p class="userComment">by: <?echo $_SESSION['username']?></p></div><?
   }
 
 ?>

@@ -29,13 +29,15 @@ function getThread($id){
   ?>
 
 
-  <h1><?echo $thread['title']?></h1> <p>Created by: <?echo $uname['uname']?></p>
-  <p><?echo $thread['fulltext']?></p>
+  <h1><?echo $thread['title']?></h1><div class="thread"> <p>Created by: <?echo $uname['uname']?></p>
+  <p><?echo $thread['fulltext']?></p></div>
   <p>Want to comment? Scroll down or <a href="#writeComment">click here!</a></p>
 
   <?foreach($comments as $comment){
     ?>
+    <div class="comment">
     <p><?echo $comment['content']?></p> <p class="userComment">by: <?echo $comment['uname']?></p>
+  </div>
   <?}?>
 
   <label id="writeComment">Comment here</label>
