@@ -50,17 +50,19 @@ $albumImages = getAlbumImages($album);
       <input type="submit" value="Rename!">
     </form>
 
+    <?if(isset($_SESSION["id"]) && in_array( $_SESSION["id"], getAlbumAllowedEditors($_GET["id"]) )){?>
     <ul class="options">
         <li><a href="database/action_deleteAlbum.php?id=<?echo $_GET['id']?>">Delete Album</a></li>
         <li><a href="javascript:;" id="addImage">Add Image</a></li>
         <li><a href="javascript:;" id="renameAlbum">Rename Album</a></li>
     </ul>
+    <?}?>
     <ul class="albumImageList">
 
     <? foreach($albumImages as $image){
       ?>
         <li>
-          <img src="<?echo $image['fpath']; ?>" alt="Album image" />
+          <a href="<? echo $image['fpath']?>"><img src="<?echo $image['fpath']; ?>" alt="Album image" /></a>
           <button type="button" class="deleteImage" data-iid="<?echo $image['iid'];?>">x</button>
         </li>
       <?

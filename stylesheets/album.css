@@ -97,3 +97,7 @@ right:0;
  content:"x";
 
 }
+
+ul.albumImageList li:first-of-type button{
+  display:none;
+}

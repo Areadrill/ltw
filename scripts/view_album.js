@@ -24,9 +24,11 @@ $(document).ready(function ()
         data: formData,
         async: true,
         success: function(response){
+          console.log(response);
           var images = jQuery.parseJSON(response);
           var newImagePath = images[images.length-1]["fpath"];
-          var newImageElement = $("ul.albumImageList li").first().clone().children("img").first().attr("src", newImagePath);
+          var newImageElement = $("ul.albumImageList li").first().clone();
+          newImageElement.children("a").first().children("img").first().attr("src", newImagePath);
           newImageElement.appendTo("ul.albumImageList");
           $(this).attr("hidden", "hidden");
         },
