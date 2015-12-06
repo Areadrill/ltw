@@ -8,6 +8,4 @@ $(document).ready(function(){
   }).on('change', function(event){
     event.target.setCustomValidity("");
   });
-  $("form").append($("<input type=\"hidden\" name=\"csrf\" value=\" <?=$_SESSION['tok'])?>\">"));
-
 });
