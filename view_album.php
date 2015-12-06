@@ -22,15 +22,19 @@ $albumImages = getAlbumImages($album);
   <head>
     <?require_once('includes.php');?>
     <script type="text/javascript" src="scripts/view_album.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/album.css" >
+
   </head>
   <body>
     <?require_once('templates/header.php');?>
+    <section id="album">
     <h1> <?echo $album['nome'];?></h1>
 
     <form id="uploadAlbumImage" enctype="multipart/form-data" hidden="hidden">
-      <label hidden="hidden">Album Number:
+      <label class="hidden" hidden="hidden">Album Number:
         <input id="uploadImageAlbumNumber" type="number" name="albumId" min="0" value="<?echo $_GET['id']?>"/>
       </label>
+
       <label>Image File:
         <input type="file" name="albumImage" id="albumImage"/>
       </label>
@@ -57,10 +61,11 @@ $albumImages = getAlbumImages($album);
       ?>
         <li>
           <img src="<?echo $image['fpath']; ?>" alt="Album image" />
-          <button type="button" class="deleteImage" data-iid="<?echo $image['iid'];?>">Delete Image</button>
+          <button type="button" class="deleteImage" data-iid="<?echo $image['iid'];?>">x</button>
         </li>
       <?
     }?>
   </ul>
+</section>
   </body>
 </html>
