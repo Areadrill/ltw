@@ -7,3 +7,10 @@
   top:0;
   z-index: -1;
 }
+
+.imgText {
+  z-index:1;
+  color: white;
+  font-size: 48px;
+  font-family: helvetica, arial, sans-serif;
+}

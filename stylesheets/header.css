@@ -15,9 +15,10 @@ body{
 ul#options{
   display:inline-block;
   float:right;
+  margin-right: 2em;
   text-decoration: none;
   margin-right: 64px;
-  clear:both;
+  /*clear:both;*/
 }
 
 ul#options li{
@@ -28,7 +29,7 @@ ul#options li{
 }
 
 ul#options li:hover{
-  text-decoration: underline;
+  background-color: #141414;
 }
 
 ul#options a{
