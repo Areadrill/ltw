@@ -17,6 +17,7 @@ if(!existsAlbum($_GET["id"])){
 }
 
 $deleted = deleteAlbum($_GET["id"]);
+var_dump($deleted);
 if(!$deleted){
   http_response_code(500);
   exit;

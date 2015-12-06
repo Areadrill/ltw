@@ -1,4 +1,17 @@
 <?
+function isMainAlbum($aid){
+  require("connect.php");
+    $stmt = $db->prepare("SELECT * FROM Album, ImageAlbum, Event WHERE Album.aid=? AND event.eid=album.eid AND ImageAlbum.aid=Album.aid AND event.eimage=ImageAlbum.iid");
+    $stmt->execute(array($aid));
+    $res = $stmt->fetch();
+    if(!$res){
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
 function imageInAlbum($iid, $aid){
   require("connect.php");
   $stmt = $db->prepare("SELECT iid FROM ImageAlbum WHERE aid=?");
@@ -31,7 +44,7 @@ function getAlbum($aid){
 
 function deleteAlbum($aid){
   require("connect.php");
-
+  var_dump($aid);
   $stmt = $db->prepare("DELETE FROM Album WHERE aid=?");
   $res = $stmt->execute(array($aid));
 

@@ -26,7 +26,7 @@ function ajaxComment(){
         console.log(response);
 
         var comment = $.parseHTML(response);
-        $("p.userComment").last().after(comment);
+        $("#writeComment").last().before(comment);
       },
       cache: false,
       contentType: false,

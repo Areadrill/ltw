@@ -21,7 +21,7 @@ foreach($results as $result){
 if($allowed){
   $result = createAlbum( $eventId, $albumName);
   if($result == FALSE){
-    http_response_code(200);
+    http_response_code(500);
   }
 }
 else
