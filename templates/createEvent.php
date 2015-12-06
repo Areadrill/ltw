@@ -44,5 +44,5 @@
 </form>
 
 <?if(isset($_GET['fail'])){?>
-  <p id="failmsg">You've alrady created an event by that name.</p>
+  <p id="failmsg">The event could not be created at this time, please check if the name is unique.</p>
 <?}?>
