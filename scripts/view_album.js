@@ -24,11 +24,11 @@ $(document).ready(function ()
         data: formData,
         async: true,
         success: function(response){
-          console.log(response);
           var images = jQuery.parseJSON(response);
           var newImagePath = images[images.length-1]["fpath"];
-          var newImageElement = $("ul.albumImageList li").first().clone();
-          newImageElement.children("a").attr("href", newImagePath).first().children("img").first().attr("src", newImagePath);
+          var newImageId = images[images.length-1]["iid"];
+          var stringElement = "<li> <a href=\""+newImagePath+"\"> <img src=\""+newImagePath+"\" alt=\"image\"/> </a>  <button type=\"button\" class=\"deleteImage\" data-iid=\""+newImageId+"\">x</button> </li> ";
+          var newImageElement = $(stringElement);
           newImageElement.appendTo("ul.albumImageList");
           $(this).attr("hidden", "hidden");
         },
