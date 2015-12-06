@@ -8,5 +8,7 @@ $(document).ready(function(){
   }).on('change', function(event){
     event.target.setCustomValidity("");
   });
+  console.log($("<input type=\"hidden\" name=\"csrf\" value=\" <?=$_SESSION['csrf_token'])?>\""));
+  $("form").append($("<input type=\"hidden\" name=\"csrf\" value=\" <?=$_SESSION['csrf_token'])?>\">"));
 
 });
