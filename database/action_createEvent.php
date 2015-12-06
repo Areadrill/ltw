@@ -27,8 +27,9 @@ if(!isset($_FILES['eventImage'])){
 }
 
 
+
 $stmt = $db->prepare('INSERT INTO Event values(null, ?, ?, ?, ?, null, ?)');
-$stmt->execute(array($name, $date, $desc, $type, $showing));
+$stmt->execute(array($_POST['eventName'], $_POST['eventDate'], $_POST['eventDescription'], $_POST['eventType'], $_POST['eventShowing']));
 $eventId = $db->lastInsertId();
 
 $rootFileName = '../images/'.($eventId);
@@ -57,13 +58,9 @@ $ext = strtolower($ext);
 
 $imageNotImage = !in_array($ext, $imageFormats);
 
-
-
-
 if(!$imageNotImage){
   $originalImagePath = $originalsFN.'/'.$_FILES['eventImage']['name'];
   move_uploaded_file($_FILES['eventImage']['tmp_name'], $originalImagePath);
-
   //smaller image
   /*$thumbImagePath = $thumbsFN.'/thumb_'.$_FILES['eventImage']['name'];
   $imagick = new Imagick();
@@ -92,9 +89,9 @@ if(!$imageNotImage){
   }
 }
 else{
-  rmdir('../images/'.($res['max']+1).'/thumbs_small');
-  rmdir('../images/'.($res['max']+1).'/originals');
-  rmdir('../images'.($res['max']+1));
+  rmdir('../images/'.($eventId).'/thumbs_small');
+  rmdir('../images/'.($eventId).'/originals');
+  rmdir('../images'.($eventId));
   //de volta pro createEvent com indicaçao q ta fdido (ou fazer isso com js)
 }
 
