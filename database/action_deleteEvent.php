@@ -1,5 +1,5 @@
 <?
-require_once('session_check.php');
+session_start();
 require_once('connect.php');
 $statmt = $db->prepare("SELECT uid FROM EventOwner WHERE eid=?");
 $statmt->execute(array($_GET['id']));

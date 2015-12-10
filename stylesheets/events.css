@@ -77,6 +77,12 @@ body{
   background-color: white;
   border-radius: 10px;
   width: 55rem;
+  overflow-x:
+  overflow-y: scroll;
+  clear:both;
+}
+#description p{
+  word-wrap: break-word;
 }
 
 #albums{
@@ -86,6 +92,7 @@ body{
   overflow-y: scroll;
   background-color: white;
   border-radius: 10px;
+  float:left;
 }
 
 div.album{
@@ -105,9 +112,9 @@ div.album{
 }
 
 #threads{
-  position:absolute;
-  top: 29rem;
-  left: 26rem;
+  float:left;
+  margin-left:1em;
+
   width: 30rem;
 
 }
@@ -133,13 +140,14 @@ a {
   text-decoration: none;
 }
 
-
 div.hiddenForm{
   background-color: white;
   padding:0.5em;
   border: 3px solid green;
   background-color: grey;
   display:none;
+  z-index: 100;
+  clear:left;
 }
 
 div.hiddenForm label{

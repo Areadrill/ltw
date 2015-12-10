@@ -60,7 +60,7 @@ $(document).ready(function ()
     $("button.deleteImage").click(function(){
       var parent = $(this).parent();
       $.post("database/action_deleteAlbumPhoto.php",
-       {aid: $("#uploadImageAlbumNumber").attr("value"), iid: $(this).attr("data-iid")})
+       {aid: $("#uploadImageAlbumNumber").attr("value"), iid: $(this).attr("data-iid"), csrf: $("#csrf").val()})
        .done(function(){parent.remove();});
     });
 

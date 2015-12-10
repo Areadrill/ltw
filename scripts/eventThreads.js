@@ -15,8 +15,9 @@ $(document).ready(function(){
       eventId: $("#eventIdHidden").val(),
       csrf: $("#csrf").val()},
       function(data){
-	console.log(data);
-	location.reload();
+        var domElements = $.parseHTML(data);
+       $("section#threads").append(domElements);
+        $("#threadCreation").hide(400);
       }).fail(function(){
 
         alert("Thread by that name already exists");
@@ -34,8 +35,7 @@ $(document).ready(function(){
       "database/action_createAlbum.php",
       {albumName: $("input[name=albumName]").val(), eventId:$("#eventIdField").val(), csrf: $("#csrf").val()},
       function(data){
-        console.log(data);
-        location.reload(true);
+        location.reload();
       }
     ).fail(function(){
       alert("Album by that name could not be created.");

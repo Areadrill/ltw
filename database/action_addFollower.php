@@ -1,15 +1,14 @@
 <?
 require_once('session_check.php');
 if(!isset($_SESSION['username'])){
-  header('Location: ../index.php');
+  http_response_code(403);
   exit();
 }
 if(isset($_POST['users'])){
   followarray($_POST['users']);
-  header('Location: ../index.php');
+  http_response_code(403);
   exit();
 }
-
 require_once('connect.php');
 
 $stmt = $db->prepare('SELECT private FROM Event WHERE eid=?');

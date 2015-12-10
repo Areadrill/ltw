@@ -9,6 +9,7 @@ function updateFollowCount(count){
 function setupHandlers(){
   $("#unfollowButton").click(function(){
     $("#unfollowButton").unbind();
+    console.log($("#csrf").val());
     jQuery.post(
       "database/action_addFollower.php",
       {eventId: $("#eventIdField").val(), delete: 1,   csrf: $("#csrf").val()},
@@ -18,6 +19,8 @@ function setupHandlers(){
         $("#followButton").text("Follow");
         updateFollowCount(data);
         setupHandlers();
+      }).fail(function(){
+        console.log("falhei");
       });
       });
       $("#followButton").click(function(){

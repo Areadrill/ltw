@@ -31,7 +31,7 @@ $albumImages = getAlbumImages($album);
     <h1> <?echo $album['nome'];?></h1>
 
     <form id="uploadAlbumImage" enctype="multipart/form-data" hidden="hidden">
-      <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
+      <input type="hidden" id="csrf" name="csrf" value="<?echo $_SESSION['tok']?>" />
       <label class="hidden" hidden="hidden">Album Number:
         <input id="uploadImageAlbumNumber" type="number" name="albumId" min="0" value="<?echo $_GET['id']?>"/>
       </label>

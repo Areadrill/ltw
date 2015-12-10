@@ -92,7 +92,7 @@ else{
 
 <div id="albumCreation" class="hiddenForm">
   <form id="albumCreationForm" action="database/action_createAlbum.php" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="csrf" value="<?echo $_SESSION['tok']?>" />
+    <input type="hidden" id="csrf" name="csrf" value="<?echo $_SESSION['tok']?>" />
     <label>Album Name:</label>
     <input type="text" name="albumName"/>
     <br>
